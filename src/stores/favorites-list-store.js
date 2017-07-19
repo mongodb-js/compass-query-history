@@ -17,42 +17,56 @@ const FavoritesListStore = Reflux.createStore({
   init() {
   },
 
-  addFavorite(recent) {
-    // @note: Durran: To save the favorite query:
-    //   const attributes = recent.serialize();
-    //   attributes.name = '';
-    //   const query = new Query(attributes);
-    //   query.save();
+  saveRecent(query) {
     this.setState({
-      recents: this.state.recents.push(recent)
+      current_favorite: query
     });
+    Actions.showFavorites();
   },
 
-  saveFavorite(name) {
-    this.state.current_favorite.setName(name);
-    this.setState({
-      favorites: this.state.favorites.push(this.state.current_favorite)
-    });
-    this.state.current_favorite = null;
+  saveFavorite(recent, name) {
+    // this.state.favorites.remove(recent._id);
+
+    // const attributes = recent.serialize();
+    // attributes.name = name;
+    // attributes.isFavorite = true;
+
+    // const query = new Query(attributes); //TODO: does this change _id?
+    // query.save();
+    //
+    // this.state.favorites.add(query);
+
+    // this.setState({
+    //   current_favorite: null,
+    //   favorites: this.state.favorites
+    // });
+  },
+
+  deleteFavoriteQuery(query) {
+    // console.log('deleting favorite query:' + JSON.stringify(query, null, ' '));
+    // this.state.favorites.remove(query._id);
+    // this.setState({
+    //   favorites: this.state.favorites
+    // });
   },
 
   getInitialState() {
     // const queries = QueryCollection.fetch();
     // var favoriteQueries = new FilteredCollection(queries, {
-      // where: {
-        // isFavorite: true
-      // },
-      // comparator: (model) => {
-        // return -model.lastExecuted;
-      // }
+    //   where: {
+    //     isFavorite: true
+    //   },
+    //   comparator: (model) => {
+    //     return -model.lastExecuted;
+    //   }
     // });
-  
+
     const favorites = new QueryCollection([
       new Query({ filter: '{ age: 5 }', skip: 10, limit: 10, isFavorite: true })
     ]);
 
     return {
-      favorites: favorites, // QueryCollection.fetch();
+      favorites: favorites,
       current_favorite: null
     };
   }

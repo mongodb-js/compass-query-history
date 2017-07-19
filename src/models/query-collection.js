@@ -1,12 +1,12 @@
 const Collection = require('ampersand-rest-collection');
 const Query = require('./query');
-const storageMixin = require('storage-mixin');
-const electronApp = require('electron').remote.app;
+// const storageMixin = require('storage-mixin');
+// const electronApp = require('electron').remote.app;
 
 /**
  * Represents a collection of queries.
  */
-const QueryCollection = Collection.extend(storageMixin, {
+const QueryCollection = Collection.extend({// storageMixin, {
   /**
    * Contains Query models.
    */
@@ -15,10 +15,10 @@ const QueryCollection = Collection.extend(storageMixin, {
    * Namespace to store in.
    */
   namespace: 'Queries',
-  storage: {
-    backend: 'local',
-    appName: electronApp.getName()
-  },
+  // storage: {
+  //   backend: 'local',
+  //   appName: electronApp.getName()
+  // },
   mainIndex: '_id'
 });
 

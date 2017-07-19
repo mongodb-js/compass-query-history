@@ -1,5 +1,6 @@
 const React = require('react');
 const PropTypes = require('prop-types');
+const _ = require('lodash');
 
 const RecentComponent = require('./recent-component');
 
@@ -18,9 +19,9 @@ class RecentListComponent extends React.Component {
         <h2 className="query-history-title">RecentListComponent</h2>
         <p><i>The query history recent-list.</i></p>
         <ul>
-          {this.props.recents.map(function(item) {
+          {_.map(this.props.recents.map, function(item, i) {
             return (
-              <RecentComponent model={item}/>
+              <RecentComponent key={i} model={item}/>
             );
           })}
         </ul>

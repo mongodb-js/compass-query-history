@@ -6,15 +6,15 @@ class FavoriteComponent extends React.Component {
   constructor(props) {
     super(props);
     this.copyQuery = this.copyQuery.bind(this);
-    this.deleteQuery = this.deleteQuery.bind(this);
+    this.deleteFavorite = this.deleteFavorite.bind(this);
   }
 
   copyQuery() {
     Actions.copyQuery(this.props.model);
   }
 
-  deleteQuery() {
-    Actions.deleteQuery(this.props.model);
+  deleteFavorite() {
+    Actions.deleteFavorite(this.props.model);
   }
   /**
    * Render FavoriteComponent.
@@ -26,13 +26,13 @@ class FavoriteComponent extends React.Component {
   render() {
     return (
       <div className="query-history-favorite">
-        <p><i>A query history favorite</i></p>
+        <p><i>A query history favorite + {JSON.stringify(this.props.model, null, ' ')}</i></p>
         <ul>
-          <li id="COPY-RECENT">
-            <span href="#" onClick={this.copyQuery}>Copy Recent</span>
+          <li id="COPY-FAVORITE">
+            <span href="#" onClick={this.copyQuery}>Copy Favorite</span>
           </li>
-          <li id="DELETE-RECENT">
-            <span href="#" onClick={this.deleteQuery}>Delete Recent</span>
+          <li id="DELETE-FAVORITE">
+            <span href="#" onClick={this.deleteFavorite}>Delete Favorite</span>
           </li>
         </ul>
       </div>
@@ -41,7 +41,7 @@ class FavoriteComponent extends React.Component {
 }
 
 FavoriteComponent.propTypes = {
-  model: PropTypes.object.isRequired
+  model: PropTypes.object
 };
 
 FavoriteComponent.defaultProps = {

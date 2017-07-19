@@ -8,7 +8,8 @@ const Actions = Reflux.createActions([
   'showRecent',
   'collapse',
   'copyQuery',
-  'deleteQuery',
+  'deleteRecent',
+  'deleteFavorite',
   'addRecent',
   'saveRecent',
   'saveFavorite'

@@ -9,7 +9,7 @@ class RecentComponent extends React.Component {
     super(props);
     this.saveRecent = this.saveRecent.bind(this);
     this.copyQuery = this.copyQuery.bind(this);
-    this.deleteQuery = this.deleteQuery.bind(this);
+    this.deleteRecent = this.deleteRecent.bind(this);
   }
 
   saveRecent() {
@@ -20,8 +20,8 @@ class RecentComponent extends React.Component {
     Actions.copyQuery(this.props.model);
   }
 
-  deleteQuery() {
-    Actions.deleteQuery(this.props.model);
+  deleteRecent() {
+    Actions.deleteRecent(this.props.model);
   }
 
   /**
@@ -34,7 +34,7 @@ class RecentComponent extends React.Component {
   render() {
     return (
       <div className="query-history-recent">
-        <p><i>A recent query.</i></p>
+        <p><i>A recent query: + {JSON.stringify(this.props.model, null, ' ')}</i></p>
         <ul>
           <li id="SAVE-RECENT">
             <span href="#" onClick={this.saveRecent}>Save Recent</span>
@@ -43,7 +43,7 @@ class RecentComponent extends React.Component {
             <span href="#" onClick={this.copyQuery}>Copy Recent</span>
           </li>
           <li id="DELETE-RECENT">
-            <span href="#" onClick={this.deleteQuery}>Delete Recent</span>
+            <span href="#" onClick={this.deleteRecent}>Delete Recent</span>
           </li>
         </ul>
       </div>
