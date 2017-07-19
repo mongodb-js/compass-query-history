@@ -30,11 +30,13 @@ class FavoritesListComponent extends React.Component {
 }
 
 FavoritesListComponent.propTypes = {
-  favorites: PropTypes.array
+  favorites: PropTypes.object,
+  current_favorite: PropTypes.object
 };
 
 FavoritesListComponent.defaultProps = {
-  favorites: []
+  favorites: null,
+  current_favorite: null
 };
 
 FavoritesListComponent.displayName = 'QueryHistoryFavoritesListComponent';

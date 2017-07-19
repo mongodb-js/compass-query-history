@@ -30,7 +30,7 @@ class RecentListComponent extends React.Component {
 }
 
 RecentListComponent.propTypes = {
-  recents: PropTypes.array
+  recents: PropTypes.object
 };
 
 RecentListComponent.defaultProps = {
