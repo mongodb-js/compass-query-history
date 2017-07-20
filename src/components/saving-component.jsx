@@ -5,14 +5,14 @@ const Actions = require('../actions');
 class SavingComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.cancelSave = this.cancelSave.bind(this);
+    this.cancel = this.cancel.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.name = this.props.model.lastExecuted.toString();
   }
 
-  cancelSave() {
+  cancel() {
     Actions.cancelSave();
   }
 
@@ -47,7 +47,7 @@ class SavingComponent extends React.Component {
         </form>
 
         <li id="CANCEL-SAVE">
-          <span href="#" onClick={this.cancelSave()}>Cancel</span>
+          <span href="#" onClick={this.cancel}>Cancel</span>
         </li>
       </div>
     );
