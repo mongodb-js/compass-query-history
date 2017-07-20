@@ -13,10 +13,6 @@ const RecentListStore = Reflux.createStore({
 
   listenables: Actions,
 
-  saveRecent(query) {
-    console.log('IN RECENT save recent, state:' + JSON.stringify(this.state, null, ' '));
-  },
-
   addRecent(recent) {
     // const query = new Query(recent); // TODO: Integrate with Compass: determine the format that queries will come in
     // query.save();
@@ -27,6 +23,11 @@ const RecentListStore = Reflux.createStore({
     // this.setState({
     //   recents: this.state.recents
     // });
+  },
+
+  saveFavorite(recent, name) {
+    // TODO: when state is shared, may not need to delete it.
+    this.state.recents.remove(recent._id);
   },
 
   deleteRecent(query) {
@@ -40,7 +41,6 @@ const RecentListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    console.log('recent-list get initial state, state:' + JSON.stringify(this.state, null, ' ') + ' props: ' + JSON.stringify(this.props, null, ' '));
     // const queries = QueryCollection.fetch();
     // var favoriteQueries = new FilteredCollection(queries, {
     //   where: {
@@ -51,9 +51,9 @@ const RecentListStore = Reflux.createStore({
     //   }
     // });
     const recents = new QueryCollection([
-      new Query({ filter: '{ age: 5 }', skip: 10, limit: 10, isFavorite: false }),
-      new Query({ filter: '{ age: 6 }', skip: 10, limit: 10, isFavorite: false }),
-      new Query({ filter: '{ age: 7 }', skip: 10, limit: 10, isFavorite: false })
+      new Query({ filter: '{ age: 5 }', skip: 10, limit: 10, isFavorite: false, lastExecuted: Date.now() }),
+      new Query({ filter: '{ age: 6 }', skip: 10, limit: 10, isFavorite: false, lastExecuted: Date.now() }),
+      new Query({ filter: '{ age: 7 }', skip: 10, limit: 10, isFavorite: false, lastExecuted: Date.now() })
     ]);
     return {
       recents: recents

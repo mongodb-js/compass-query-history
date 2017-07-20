@@ -12,7 +12,8 @@ const Actions = Reflux.createActions([
   'deleteFavorite',
   'addRecent',
   'saveRecent',
-  'saveFavorite'
+  'saveFavorite',
+  'cancelSave'
 ]);
 
 module.exports = Actions;

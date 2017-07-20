@@ -17,31 +17,26 @@ const FavoritesListStore = Reflux.createStore({
 
 
   saveRecent(query) {
-    console.log('IN FAVORITE save recent, state:' + JSON.stringify(this.state, null, ' '));
-    // this.setState({
-    //   current_favorite: query
-    // });
-    // Actions.showFavorites();
+    this.setState({
+      current_favorite: query
+    });
+    Actions.showFavorites();
   },
 
   saveFavorite(recent, name) {
-    console.log('save favorite, state:' + JSON.stringify(this.state, null, ' '));
+    this.state.favorites.remove(recent._id);
 
-    // this.state.recents.remove(recent._id);
+    const attributes = recent.serialize();
+    attributes.name = name;
+    attributes.isFavorite = true;
 
-    // const attributes = recent.serialize();
-    // attributes.name = name;
-    // attributes.isFavorite = true;
+    const query = new Query(attributes); // TODO: does this change _id?
 
-    // const query = new Query(attributes); //TODO: does this change _id?
-    // query.save();
-    //
-    // this.state.recents.add(query);
+    this.state.favorites.add(query);
 
-    // this.setState({
-    //   current_favorite: null,
-    //   favorites: this.state.recents
-    // });
+    this.setState({
+      current_favorite: null
+    });
   },
 
   deleteFavorite(query) {
@@ -50,7 +45,6 @@ const FavoritesListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    console.log('favorites-list get initial state, state:' + JSON.stringify(this.state, null, ' ') + ' props: ' + JSON.stringify(this.props, null, ' '));
     // const queries = QueryCollection.fetch();
     // var favoriteQueries = new FilteredCollection(queries, {
     //   where: {
@@ -61,9 +55,9 @@ const FavoritesListStore = Reflux.createStore({
     //   }
     // });
     const favoritesColl = new QueryCollection([
-      new Query({ filter: '{ age: 1 }', skip: 10, limit: 10, isFavorite: true }),
-      new Query({ filter: '{ age: 2 }', skip: 10, limit: 10, isFavorite: true }),
-      new Query({ filter: '{ age: 3 }', skip: 10, limit: 10, isFavorite: true })
+      new Query({ filter: '{ age: 1 }', skip: 10, limit: 10, isFavorite: true, lastExecuted: Date.now(), name: 'Query 1'}),
+      new Query({ filter: '{ age: 2 }', skip: 10, limit: 10, isFavorite: true, lastExecuted: Date.now(), name: 'Query 2' }),
+      new Query({ filter: '{ age: 3 }', skip: 10, limit: 10, isFavorite: true, lastExecuted: Date.now(), name: 'Query 3'})
     ]);
     return {
       favorites: favoritesColl,

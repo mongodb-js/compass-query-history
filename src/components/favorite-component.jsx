@@ -26,7 +26,7 @@ class FavoriteComponent extends React.Component {
   render() {
     return (
       <div className="query-history-favorite">
-        <p><i>A query history favorite + {JSON.stringify(this.props.model, null, ' ')}</i></p>
+        <p><i>Name: {this.props.model.name}</i></p>
         <ul>
           <li id="COPY-FAVORITE">
             <span href="#" onClick={this.copyQuery}>Copy Favorite</span>
@@ -35,6 +35,7 @@ class FavoriteComponent extends React.Component {
             <span href="#" onClick={this.deleteFavorite}>Delete Favorite</span>
           </li>
         </ul>
+        <p><i>Contents: {JSON.stringify(this.props.model, null, ' ')}</i></p>
       </div>
     );
   }
