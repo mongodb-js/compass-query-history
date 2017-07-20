@@ -8,9 +8,16 @@ const FavoritesListStore = require('../stores/favorites-list-store');
 const { StoreConnector } = require('hadron-react-components');
 const PropTypes = require('prop-types');
 
+const QueryCollection = require('../models/query-collection');
+const Query = require('../models/query');
 // const debug = require('debug')('mongodb-compass:query-history:sidebar-component');
 
 class SidebarComponent extends React.Component {
+  constructor(props) {
+    super(props);
+    this.queryCollection = new QueryCollection([new Query(
+      { filter: '{ age: SIDEBAR }', skip: 10, limit: 10, isFavorite: true })])
+  }
 
   /**
    * Render Sidebar component.
