@@ -14,18 +14,13 @@ const RecentListStore = Reflux.createStore({
   listenables: Actions,
 
   addRecent(recent) {
-    // const query = new Query(recent); // TODO: Integrate with Compass: determine the format that queries will come in
-    // query.save();
-    // this.state.recents.add(query);
-
-    // console.log('adding query to recent list:' + JSON.stringify(recent, null, ''));
-
-    // this.setState({
-    //   recents: this.state.recents
-    // });
+    // TODO: Integrate with Compass: determine the format that queries will come in
+    const query = new Query(recent);
+    this.state.recents.add(query);
+    this.trigger(this.state);
   },
 
-  saveFavorite(recent, name) {
+  saveFavorite(recent) {
     // TODO: when state is shared, may not need to delete it.
     this.state.recents.remove(recent._id);
   },
@@ -36,7 +31,7 @@ const RecentListStore = Reflux.createStore({
   },
 
   copyQuery(query) {
-    console.log('copy query, state:' + JSON.stringify(this.state, null, ' '));
+    console.log('copy query:' + JSON.stringify(query, null, ' '));
     // clipboard.writeText(JSON.stringify(query, null, ' '));
   },
 
