@@ -1,9 +1,9 @@
 const Reflux = require('reflux');
 const Actions = require('../actions');
 const StateMixin = require('reflux-state-mixin');
-const Query = require('../models/query');
-const QueryCollection = require('../models/query-collection');
-const FilteredCollection = require('ampersand-filtered-subcollection');
+// const Query = require('../models/query');
+// const QueryCollection = require('../models/query-collection');
+// const FilteredCollection = require('ampersand-filtered-subcollection');
 
 /**
  * Query History Recent List store.
@@ -39,26 +39,6 @@ const RecentListStore = Reflux.createStore({
   copyQuery(query) {
     // console.log('copy query:' + JSON.stringify(query, null, ' '));
     // clipboard.writeText(JSON.stringify(query, null, ' '));
-  },
-
-  getInitialState() {
-    // const queries = QueryCollection.fetch();
-    // var recentQueries = new FilteredCollection(queries, {
-    //   where: {
-    //     isFavorite: false
-    //   },
-    //   comparator: (model) => {
-    //     return -model.lastExecuted;
-    //   }
-    // });
-    const recents = new QueryCollection([
-      new Query({ filter: '{ age: 1 }', skip: 1, limit: 10 }),
-      new Query({ filter: '{ age: 2 }', skip: 1, limit: 10 }),
-      new Query({ filter: '{ age: 3 }', skip: 1, limit: 10 })
-    ]);
-    return {
-      recents: recents
-    };
   }
 });
 
