@@ -8,7 +8,6 @@ const FavoritesComponent = require('./favorite-component');
 class FavoritesListComponent extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   /**
@@ -34,6 +33,7 @@ class FavoritesListComponent extends React.Component {
     );
   }
 }
+
 FavoritesListComponent.propTypes = {
   collection: PropTypes.object,
   current_favorite: PropTypes.object

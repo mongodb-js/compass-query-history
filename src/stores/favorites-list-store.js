@@ -17,7 +17,7 @@ const FavoritesListStore = Reflux.createStore({
 
 
   saveRecent(query) {
-    console.log("IN FAVORITE save recent, state:" + JSON.stringify(this.state, null, ' '));
+    console.log('IN FAVORITE save recent, state:' + JSON.stringify(this.state, null, ' '));
     // this.setState({
     //   current_favorite: query
     // });
@@ -25,9 +25,9 @@ const FavoritesListStore = Reflux.createStore({
   },
 
   saveFavorite(recent, name) {
-    console.log("save favorite, state:" + JSON.stringify(this.state, null, ' '));
+    console.log('save favorite, state:' + JSON.stringify(this.state, null, ' '));
 
-    // this.state.collection.remove(recent._id);
+    // this.state.recents.remove(recent._id);
 
     // const attributes = recent.serialize();
     // attributes.name = name;
@@ -36,25 +36,25 @@ const FavoritesListStore = Reflux.createStore({
     // const query = new Query(attributes); //TODO: does this change _id?
     // query.save();
     //
-    // this.state.collection.add(query);
+    // this.state.recents.add(query);
 
     // this.setState({
     //   current_favorite: null,
-    //   collection: this.state.collection
+    //   favorites: this.state.recents
     // });
   },
 
   deleteFavorite(query) {
-    console.log("delete favorite, state:" + JSON.stringify(this.state, null, ' '));
+    console.log('delete favorite, state:' + JSON.stringify(this.state, null, ' '));
     // console.log('deleting favorite query:' + JSON.stringify(query, null, ' '));
-    // this.state.collection.remove(query._id);
+    // this.state.recents.remove(query._id);
     // this.setState({
-    //   collection: this.state.collection
+    //   favorites: this.state.recents
     // });
   },
 
   getInitialState() {
-    console.log("favorites-list get initial state, state:" + JSON.stringify(this.state, null, ' ') + ' props: ' + JSON.stringify(this.props, null, ' '));;
+    console.log('favorites-list get initial state, state:' + JSON.stringify(this.state, null, ' ') + ' props: ' + JSON.stringify(this.props, null, ' '));
     // const queries = QueryCollection.fetch();
     // var favoriteQueries = new FilteredCollection(queries, {
     //   where: {
@@ -65,7 +65,7 @@ const FavoritesListStore = Reflux.createStore({
     //   }
     // });
     const favoritesColl = new QueryCollection([
-      new Query({ filter: '{ age: FAVORITES INITIAL STATE }', skip: 10, limit: 10, isFavorite: true }),
+      new Query({ filter: '{ age: FAVORITES INITIAL STATE }', skip: 10, limit: 10, isFavorite: true })
     ]);
     return {
       collection: favoritesColl,

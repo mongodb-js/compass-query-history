@@ -17,38 +17,40 @@ const RecentListStore = Reflux.createStore({
   },
 
   saveRecent(query) {
-    console.log("IN RECENT save recent, state:" + JSON.stringify(this.state, null, ' '));
+    console.log('IN RECENT save recent, state:' + JSON.stringify(this.state, null, ' '));
   },
 
   addRecent(recent) {
     // const query = new Query(recent); // TODO: Integrate with Compass: determine the format that queries will come in
     // query.save();
-    // this.state.collection.add(query);
+    // this.state.recents.add(query);
 
-    // console.log("adding query to recent list:" + JSON.stringify(recent, null, ''));
+    // console.log('adding query to recent list:' + JSON.stringify(recent, null, ''));
 
     // this.setState({
-    //   collection: this.state.collection
+    //   recents: this.state.recents
     // });
   },
 
   deleteRecent(query) {
-    console.log("delete recent, state:" + JSON.stringify(this.state, null, ' '));
-    // console.log('deleting recent query:' + JSON.stringify(query, null, ' '));
-    // this.state.collection.remove(query._id);
+    console.log('delete recent, state:' + JSON.stringify(this.state, null, ' '));
+    console.log('deleting recent query:' + JSON.stringify(query, null, ' '));
+    this.state.collection.remove(query._id);
+    this.trigger(this.state);
     // this.setState({
     //   collection: this.state.collection
     // });
+    console.log('AFTER, state:' + JSON.stringify(this.state, null, ' '));
   },
 
   copyQuery(query) {
-    console.log("copy query, state:" + JSON.stringify(this.state, null, ' '));
+    console.log('copy query, state:' + JSON.stringify(this.state, null, ' '));
     // console.log('copy query:' + JSON.stringify(query, null, ' '));
     // clipboard.writeText(JSON.stringify(query, null, ' '));
   },
 
   getInitialState() {
-    console.log("recent-list get initial state, state:" + JSON.stringify(this.state, null, ' ') + ' props: ' + JSON.stringify(this.props, null, ' '));;
+    console.log('recent-list get initial state, state:' + JSON.stringify(this.state, null, ' ') + ' props: ' + JSON.stringify(this.props, null, ' '));
     // const queries = QueryCollection.fetch();
     // var favoriteQueries = new FilteredCollection(queries, {
     //   where: {
@@ -59,7 +61,7 @@ const RecentListStore = Reflux.createStore({
     //   }
     // });
     const recents = new QueryCollection([
-      new Query({ filter: '{ age: RECENT INITIAL STATE }', skip: 10, limit: 10, isFavorite: true }),
+      new Query({ filter: '{ age: RECENT INITIAL STATE }', skip: 10, limit: 10, isFavorite: true })
     ]);
     return {
       collection: recents

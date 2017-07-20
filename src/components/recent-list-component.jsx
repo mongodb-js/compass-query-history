@@ -2,33 +2,12 @@ const React = require('react');
 const PropTypes = require('prop-types');
 
 const RecentComponent = require('./recent-component');
-const Query = require('../models/query');
-const QueryCollection = require('../models/query-collection');
 
 // const debug = require('debug')('mongodb-compass:query-history:recent-list-component');
 
 class RecentListComponent extends React.Component {
   constructor(props) {
     super(props);
-
-    // const queries = QueryCollection.fetch();
-    // var recentQueries = new FilteredCollection(queries, {
-    //   where: {
-    //     isFavorite: false
-    //   },
-    //   comparator: (model) => {
-    //     return -model.lastExecuted;
-    //   }
-    // });
-    // const recentColl = new QueryCollection([
-    //   new Query({ filter: '{ age: 1 }', skip: 10, limit: 10, isFavorite: true }),
-    //   new Query({ filter: '{ age: 2 }', skip: 10, limit: 10, isFavorite: true }),
-    //   new Query({ filter: '{ age: 3 }', skip: 10, limit: 10, isFavorite: true })
-    // ]);
-    // this.state = {
-    //   collection: recentColl,
-    //   current_favorite: null
-    // };
   }
 
   /**
@@ -52,6 +31,7 @@ class RecentListComponent extends React.Component {
     );
   }
 }
+
 RecentListComponent.propTypes = {
   collection: PropTypes.object
 };

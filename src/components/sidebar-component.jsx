@@ -8,34 +8,44 @@ const FavoritesListStore = require('../stores/favorites-list-store');
 const { StoreConnector } = require('hadron-react-components');
 const PropTypes = require('prop-types');
 
-const QueryCollection = require('../models/query-collection');
-const Query = require('../models/query');
 // const debug = require('debug')('mongodb-compass:query-history:sidebar-component');
 
 class SidebarComponent extends React.Component {
   constructor(props) {
     super(props);
-    this.queryCollection = new QueryCollection([new Query(
-      { filter: '{ age: SIDEBAR }', skip: 10, limit: 10, isFavorite: true })])
+    this.renderRecents = this.renderRecents.bind(this);
+    this.renderFavorites = this.renderFavorites.bind(this);
   }
 
+  renderFavorites() {
+    return (
+      <StoreConnector store={FavoritesListStore}>
+        <FavoritesListComponent/>
+      </StoreConnector>
+    );
+  }
+  
+  renderRecents() {
+    return (
+      <StoreConnector store={RecentListStore}>
+        <RecentListComponent/>
+      </StoreConnector>
+    );
+  }
+  
   /**
    * Render Sidebar component.
    *
    * @returns {React.Component} The rendered component.
    */
   render() {
-    const ListComponent = this.props.showing === 'recent' ? RecentListComponent : FavoritesListComponent;
-    const ListStore = this.props.showing === 'recent' ? RecentListStore : FavoritesListStore;
     return (
       <div className="query-history-sidebar-component">
         <p>Sidebar.props.showing={this.props.showing}</p>
         <StoreConnector store={HeaderStore}>
           <HeaderComponent showing={this.props.showing}/>
         </StoreConnector>
-        <StoreConnector store={ListStore}>
-          <ListComponent/>
-        </StoreConnector>
+        {this.props.showing === 'recent' ? this.renderRecents() : this.renderFavorites()}
       </div>
     );
   }
