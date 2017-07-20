@@ -1,5 +1,4 @@
 const React = require('react');
-const PropTypes = require('prop-types');
 const _ = require('lodash');
 
 const FavoritesComponent = require('./favorite-component');
@@ -31,16 +30,6 @@ class FavoritesListComponent extends React.Component {
     );
   }
 }
-
-FavoritesListComponent.propTypes = {
-  favorites: PropTypes.object,
-  current_favorite: PropTypes.object
-};
-
-FavoritesListComponent.defaultProps = {
-  favorites: null,
-  current_favorite: null
-};
 
 FavoritesListComponent.displayName = 'QueryHistoryFavoritesListComponent';
 

@@ -1,7 +1,8 @@
 const Reflux = require('reflux');
 const Actions = require('../actions');
 const StateMixin = require('reflux-state-mixin');
-const { Query, QueryCollection } = require('../../');
+const Query = require('../models/query');
+const QueryCollection = require('../models/query-collection');
 const FilteredCollection = require('ampersand-filtered-subcollection');
 
 /**
@@ -51,7 +52,9 @@ const RecentListStore = Reflux.createStore({
     //   }
     // });
     const recents = new QueryCollection([
-      new Query({ filter: '{ age: 1 }', skip: 1, limit: 10 })
+      new Query({ filter: '{ age: 1 }', skip: 1, limit: 10 }),
+      new Query({ filter: '{ age: 2 }', skip: 1, limit: 10 }),
+      new Query({ filter: '{ age: 3 }', skip: 1, limit: 10 })
     ]);
     return {
       recents: recents

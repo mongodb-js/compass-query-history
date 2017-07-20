@@ -1,7 +1,8 @@
 const Reflux = require('reflux');
 const Actions = require('../actions');
 const StateMixin = require('reflux-state-mixin');
-const { Query, QueryCollection } = require('../../');
+const Query = require('../models/query');
+const QueryCollection = require('../models/query-collection');
 // const FilteredCollection = require('ampersand-filtered-subcollection');
 
 // const debug = require('debug')('mongodb-compass:query-history:favorites-store');
@@ -62,7 +63,9 @@ const FavoritesListStore = Reflux.createStore({
     // });
 
     const favorites = new QueryCollection([
-      new Query({ filter: '{ age: 5 }', skip: 10, limit: 10, isFavorite: true })
+      new Query({ filter: '{ age: 5 }', skip: 10, limit: 10, isFavorite: true }),
+      new Query({ filter: '{ age: 6 }', skip: 10, limit: 10, isFavorite: true }),
+      new Query({ filter: '{ age: 7 }', skip: 10, limit: 10, isFavorite: true })
     ]);
 
     return {

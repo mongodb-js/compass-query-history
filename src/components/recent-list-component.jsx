@@ -1,5 +1,4 @@
 const React = require('react');
-const PropTypes = require('prop-types');
 const _ = require('lodash');
 
 const RecentComponent = require('./recent-component');
@@ -29,14 +28,6 @@ class RecentListComponent extends React.Component {
     );
   }
 }
-
-RecentListComponent.propTypes = {
-  recents: PropTypes.object
-};
-
-RecentListComponent.defaultProps = {
-  recents: []
-};
 
 RecentListComponent.displayName = 'QueryHistoryRecentListComponent';
 
