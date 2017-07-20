@@ -13,9 +13,6 @@ const RecentListStore = Reflux.createStore({
 
   listenables: Actions,
 
-  init() {
-  },
-
   saveRecent(query) {
     console.log('IN RECENT save recent, state:' + JSON.stringify(this.state, null, ' '));
   },
@@ -33,19 +30,12 @@ const RecentListStore = Reflux.createStore({
   },
 
   deleteRecent(query) {
-    console.log('delete recent, state:' + JSON.stringify(this.state, null, ' '));
-    console.log('deleting recent query:' + JSON.stringify(query, null, ' '));
-    this.state.collection.remove(query._id);
+    this.state.recents.remove(query._id);
     this.trigger(this.state);
-    // this.setState({
-    //   collection: this.state.collection
-    // });
-    console.log('AFTER, state:' + JSON.stringify(this.state, null, ' '));
   },
 
   copyQuery(query) {
     console.log('copy query, state:' + JSON.stringify(this.state, null, ' '));
-    // console.log('copy query:' + JSON.stringify(query, null, ' '));
     // clipboard.writeText(JSON.stringify(query, null, ' '));
   },
 
@@ -61,10 +51,12 @@ const RecentListStore = Reflux.createStore({
     //   }
     // });
     const recents = new QueryCollection([
-      new Query({ filter: '{ age: RECENT INITIAL STATE }', skip: 10, limit: 10, isFavorite: true })
+      new Query({ filter: '{ age: 5 }', skip: 10, limit: 10, isFavorite: false }),
+      new Query({ filter: '{ age: 6 }', skip: 10, limit: 10, isFavorite: false }),
+      new Query({ filter: '{ age: 7 }', skip: 10, limit: 10, isFavorite: false })
     ]);
     return {
-      collection: recents
+      recents: recents
     };
   }
 });

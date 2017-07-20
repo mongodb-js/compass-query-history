@@ -24,7 +24,7 @@ class SidebarComponent extends React.Component {
       </StoreConnector>
     );
   }
-  
+
   renderRecents() {
     return (
       <StoreConnector store={RecentListStore}>
@@ -32,7 +32,7 @@ class SidebarComponent extends React.Component {
       </StoreConnector>
     );
   }
-  
+
   /**
    * Render Sidebar component.
    *
@@ -45,7 +45,8 @@ class SidebarComponent extends React.Component {
         <StoreConnector store={HeaderStore}>
           <HeaderComponent showing={this.props.showing}/>
         </StoreConnector>
-        {this.props.showing === 'recent' ? this.renderRecents() : this.renderFavorites()}
+        {this.props.showing === 'favorites' ? this.renderFavorites() : null}
+        {this.props.showing === 'recent' ? this.renderRecents() : null}
       </div>
     );
   }

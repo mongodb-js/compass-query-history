@@ -45,12 +45,8 @@ const FavoritesListStore = Reflux.createStore({
   },
 
   deleteFavorite(query) {
-    console.log('delete favorite, state:' + JSON.stringify(this.state, null, ' '));
-    // console.log('deleting favorite query:' + JSON.stringify(query, null, ' '));
-    // this.state.recents.remove(query._id);
-    // this.setState({
-    //   favorites: this.state.recents
-    // });
+    this.state.favorites.remove(query._id);
+    this.trigger(this.state);
   },
 
   getInitialState() {
@@ -65,10 +61,12 @@ const FavoritesListStore = Reflux.createStore({
     //   }
     // });
     const favoritesColl = new QueryCollection([
-      new Query({ filter: '{ age: FAVORITES INITIAL STATE }', skip: 10, limit: 10, isFavorite: true })
+      new Query({ filter: '{ age: 1 }', skip: 10, limit: 10, isFavorite: true }),
+      new Query({ filter: '{ age: 2 }', skip: 10, limit: 10, isFavorite: true }),
+      new Query({ filter: '{ age: 3 }', skip: 10, limit: 10, isFavorite: true })
     ]);
     return {
-      collection: favoritesColl,
+      favorites: favoritesColl,
       current_favorite: null
     };
   }

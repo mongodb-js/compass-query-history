@@ -23,7 +23,7 @@ class FavoritesListComponent extends React.Component {
         <ul>
           <p> Current favorite:</p>
           <FavoritesComponent key={0} model={this.props.current_favorite}/>
-          {this.props.collection.map(function(item, i) {
+          {this.props.favorites.map(function(item, i) {
             return (
               <FavoritesComponent key={i + 1} model={item}/>
             );
@@ -35,12 +35,12 @@ class FavoritesListComponent extends React.Component {
 }
 
 FavoritesListComponent.propTypes = {
-  collection: PropTypes.object,
+  favorites: PropTypes.object,
   current_favorite: PropTypes.object
 };
 
 FavoritesListComponent.defaultProps = {
-  collection: null,
+  favorites: null,
   current_favorite: null
 };
 
