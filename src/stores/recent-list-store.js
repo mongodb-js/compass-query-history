@@ -2,8 +2,9 @@ const Reflux = require('reflux');
 const Actions = require('../actions');
 const StateMixin = require('reflux-state-mixin');
 const Query = require('../models/query');
-// const QueryCollection = require('../models/query-collection');
+const QueryCollection = require('../models/query-collection');
 const FilteredCollection = require('ampersand-filtered-subcollection');
+// const { QueryCollection } = require('../..');
 
 /**
  * Query History Recent List store.
@@ -36,8 +37,7 @@ const RecentListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    const queries = this.props.collection;
-    const recentQueries = new FilteredCollection(queries, {
+    const recentQueries = new FilteredCollection(QueryCollection, {
       where: {
         isFavorite: false
       },

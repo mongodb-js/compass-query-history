@@ -22,4 +22,15 @@ const QueryCollection = Collection.extend(storageMixin, {
   mainIndex: '_id'
 });
 
-module.exports = QueryCollection;
+module.exports = new QueryCollection([
+  new Query({filter: '{ age: 1 }', skip: 10, limit: 10, isFavorite: true,
+    lastExecuted: Date.now(), name: 'Query 1'}),
+  new Query({ filter: '{ age: 2 }', skip: 10, limit: 10, isFavorite: true,
+    lastExecuted: Date.now(), name: 'Query 2' }),
+  new Query({ filter: '{ age: 3 }', skip: 10, limit: 10, isFavorite: true,
+    lastExecuted: Date.now(), name: 'Query 3'}),
+  new Query({ filter: '{ age: 4 }', skip: 10, limit: 10, isFavorite: false,
+    lastExecuted: Date.now() }),
+  new Query({ filter: '{ age: 5 }', skip: 10, limit: 10, isFavorite: false,
+    lastExecuted: Date.now()})
+]);
