@@ -55,7 +55,6 @@ class SidebarComponent extends React.Component {
   render() {
     return (
       <div className="query-history-sidebar-component">
-        <p>Sidebar.props.showing={this.props.showing}</p>
         <StoreConnector store={HeaderStore}>
           <HeaderComponent showing={this.props.showing}/>
         </StoreConnector>

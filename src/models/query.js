@@ -3,8 +3,6 @@ const uuid = require('uuid');
 const electronApp = require('electron').remote.app;
 const storageMixin = require('storage-mixin');
 
-console.log(electronApp.getName());
-
 /**
  * A model that represents a MongoDB query.
  */

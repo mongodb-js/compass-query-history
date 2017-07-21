@@ -21,7 +21,6 @@ class SavingComponent extends React.Component {
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.name);
     event.preventDefault();
     Actions.saveFavorite(this.props.model, this.name);
   }
