@@ -1,9 +1,8 @@
 const Reflux = require('reflux');
 const Actions = require('../actions');
 const StateMixin = require('reflux-state-mixin');
-const Query = require('../models/query');
-const QueryCollection = require('../models/query-collection');
-const FilteredCollection = require('ampersand-filtered-subcollection');
+const RecentQuery = require('../models/recent-query');
+const RecentQueryCollection = require('../models/recent-query-collection');
 
 const electron = require('electron');
 const remote = electron.remote;
@@ -26,7 +25,7 @@ const RecentListStore = Reflux.createStore({
       this.state.recents.remove(this.state.recents.at(TOTAL_RECENTS - 1)._id);
     }
 
-    const query = new Query(recent);
+    const query = new RecentQuery(recent);
     this.state.recents.add(query);
     this.trigger(this.state);
   },
@@ -48,18 +47,9 @@ const RecentListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    const recents = new QueryCollection();
-    const filteredRecents = new FilteredCollection(recents, {
-      where: {
-        isFavorite: false
-      },
-      comparator: (model) => {
-        return -model.lastExecuted;
-      }
-    });
+    const recents = new RecentQueryCollection();
     return {
-      recents: recents,
-      filteredRecents: filteredRecents
+      recents: recents
     };
   }
 });
