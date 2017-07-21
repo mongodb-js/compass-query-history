@@ -5,7 +5,12 @@ const Query = require('../models/query');
 const QueryCollection = require('../models/query-collection');
 const FilteredCollection = require('ampersand-filtered-subcollection');
 
+const electron = require('electron');
+const remote = electron.remote;
+const Clipboard = remote.clipboard;
+
 const TOTAL_RECENTS = 30;
+const ALLOWED = ['filter', 'project', 'sort', 'skip', 'limit'];
 
 /**
  * Query History Recent List store.
@@ -32,8 +37,14 @@ const RecentListStore = Reflux.createStore({
   },
 
   copyQuery(query) {
-    console.log('copy query:' + JSON.stringify(query, null, ' '));
-    // clipboard.writeText(JSON.stringify(query, null, ' '));
+    const attributes = query.serialize();
+
+
+    Object.keys(attributes)
+      .filter(key => !ALLOWED.includes(key))
+      .forEach(key => delete attributes[key]);
+
+    Clipboard.writeText(JSON.stringify(attributes, null, ' '));
   },
 
   getInitialState() {
