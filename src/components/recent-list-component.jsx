@@ -33,10 +33,12 @@ class RecentListComponent extends React.Component {
 }
 
 RecentListComponent.propTypes = {
+  collection: PropTypes.object,
   recents: PropTypes.object
 };
 
 RecentListComponent.defaultProps = {
+  collection: null,
   recents: null
 };
 

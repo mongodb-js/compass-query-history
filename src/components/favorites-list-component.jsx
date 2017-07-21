@@ -43,11 +43,13 @@ class FavoritesListComponent extends React.Component {
 }
 
 FavoritesListComponent.propTypes = {
+  collection: PropTypes.object,
   favorites: PropTypes.object,
   current_favorite: PropTypes.object
 };
 
 FavoritesListComponent.defaultProps = {
+  collection: null,
   favorites: null,
   current_favorite: null
 };
