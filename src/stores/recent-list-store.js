@@ -48,7 +48,8 @@ const RecentListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    const recentQueries = new FilteredCollection(new QueryCollection(), {
+    const recents = new QueryCollection();
+    const filteredRecents = new FilteredCollection(recents, {
       where: {
         isFavorite: false
       },
@@ -57,7 +58,8 @@ const RecentListStore = Reflux.createStore({
       }
     });
     return {
-      recents: recentQueries
+      recents: recents,
+      filteredRecents: filteredRecents
     };
   }
 });

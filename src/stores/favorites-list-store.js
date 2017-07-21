@@ -54,7 +54,8 @@ const FavoritesListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    const favoriteQueries = new FilteredCollection(new QueryCollection(), {
+    const favorites = new QueryCollection();
+    const filteredFavorites = new FilteredCollection(favorites, {
       where: {
         isFavorite: true
       },
@@ -63,7 +64,8 @@ const FavoritesListStore = Reflux.createStore({
       }
     });
     return {
-      favorites: favoriteQueries,
+      favorites: favorites,
+      filteredFavorites: filteredFavorites,
       current_favorite: null
     };
   }
