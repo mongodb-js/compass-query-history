@@ -23,16 +23,16 @@ const RecentListStore = Reflux.createStore({
   addRecent(recent) {
     // TODO: Integrate with Compass: determine the format that queries will come in
     if (this.state.recents.length >= TOTAL_RECENTS) {
-      QueryCollection.remove(this.state.recents.at(TOTAL_RECENTS - 1)._id);
+      this.state.recents.remove(this.state.recents.at(TOTAL_RECENTS - 1)._id);
     }
 
     const query = new Query(recent);
-    QueryCollection.add(query);
+    this.state.recents.add(query);
     this.trigger(this.state);
   },
 
   deleteRecent(query) {
-    QueryCollection.remove(query._id);
+    this.state.recents.remove(query._id);
     this.trigger(this.state);
   },
 
@@ -48,7 +48,7 @@ const RecentListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    const recentQueries = new FilteredCollection(QueryCollection, {
+    const recentQueries = new FilteredCollection(new QueryCollection(), {
       where: {
         isFavorite: false
       },

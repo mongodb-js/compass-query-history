@@ -22,4 +22,4 @@ const QueryCollection = Collection.extend(storageMixin, {
   mainIndex: '_id'
 });
 
-module.exports = new QueryCollection([]); // TODO: fix this so tests can pass
+module.exports = QueryCollection;
