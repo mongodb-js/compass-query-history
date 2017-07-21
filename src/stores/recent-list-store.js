@@ -5,6 +5,8 @@ const Query = require('../models/query');
 const QueryCollection = require('../models/query-collection');
 const FilteredCollection = require('ampersand-filtered-subcollection');
 
+const TOTAL_RECENTS = 30;
+
 /**
  * Query History Recent List store.
  */
@@ -15,15 +17,14 @@ const RecentListStore = Reflux.createStore({
 
   addRecent(recent) {
     // TODO: Integrate with Compass: determine the format that queries will come in
+    if (this.state.recents.length >= TOTAL_RECENTS) {
+      QueryCollection.remove(this.state.recents.at(TOTAL_RECENTS - 1)._id);
+    }
+
     const query = new Query(recent);
     QueryCollection.add(query);
     this.trigger(this.state);
   },
-
-  // saveFavorite(recent) {
-  //   // TODO: when state is shared, may not need to delete it.
-  //   QueryCollection.remove(recent._id);
-  // },
 
   deleteRecent(query) {
     QueryCollection.remove(query._id);

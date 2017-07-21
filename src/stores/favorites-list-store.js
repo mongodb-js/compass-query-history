@@ -31,7 +31,7 @@ const FavoritesListStore = Reflux.createStore({
     attributes.isFavorite = true;
     attributes.dateSaved = Date.now();
 
-    const query = new Query(attributes); // TODO: does this change _id?
+    const query = new Query(attributes);
 
     QueryCollection.add(query);
 
