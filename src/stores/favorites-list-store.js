@@ -4,7 +4,6 @@ const StateMixin = require('reflux-state-mixin');
 const Query = require('../models/query');
 const QueryCollection = require('../models/query-collection');
 const FilteredCollection = require('ampersand-filtered-subcollection');
-// const { QueryCollection } = require('../..');
 
 // const debug = require('debug')('mongodb-compass:query-history:favorites-store');
 
@@ -25,7 +24,7 @@ const FavoritesListStore = Reflux.createStore({
   },
 
   saveFavorite(recent, name) {
-    this.state.favorites.remove(recent._id);
+    QueryCollection.remove(recent._id);
 
     const attributes = recent.serialize();
     attributes.name = name;
@@ -34,7 +33,7 @@ const FavoritesListStore = Reflux.createStore({
 
     const query = new Query(attributes); // TODO: does this change _id?
 
-    this.state.favorites.add(query);
+    QueryCollection.add(query);
 
     this.setState({
       current_favorite: null
@@ -49,7 +48,7 @@ const FavoritesListStore = Reflux.createStore({
   },
 
   deleteFavorite(query) {
-    this.state.favorites.remove(query._id);
+    QueryCollection.remove(query._id);
     this.trigger(this.state);
   },
 
