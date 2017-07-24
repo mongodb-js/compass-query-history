@@ -23,10 +23,10 @@ class SidebarComponent extends React.Component {
 
   addRecent() {
     const newQuery = {
-      filter: 'number: #' + this.count++,
+      filter: {name: 'number: #' + this.count++},
       skip: 99,
       limit: 99,
-      lastExecuted: Date.now()};
+      _lastExecuted: Date.now()};
     Actions.addRecent(newQuery);
   }
 

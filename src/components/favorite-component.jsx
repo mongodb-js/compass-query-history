@@ -19,14 +19,22 @@ class FavoriteComponent extends React.Component {
   /**
    * Render FavoriteComponent.
    *
-   * Contains a name and a Query Model (TBD).
+   * Contains a Query Model.
    *
    * @returns {React.Component} The rendered component.
    */
   render() {
+    const attributes = this.props.model.serialize();
     return (
-      <div className="query-history-favorite">
-        <p><i>Name: {this.props.model.name}</i></p>
+      <div className="query-history-query">
+        <p className="query-history-title">{this.props.model._name}</p>
+        <ul>
+          {Object.keys(attributes).map(function(key, i) {
+            return (
+              <li key={i}>{key}</li>
+            );
+          })}
+        </ul>
         <ul>
           <li id="COPY-FAVORITE">
             <span href="#" onClick={this.copyQuery}>Copy Favorite</span>

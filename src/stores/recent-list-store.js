@@ -25,7 +25,7 @@ const RecentListStore = Reflux.createStore({
     }
 
     const query = new RecentQuery(recent);
-    query.lastExecuted = Date.now();
+    query._lastExecuted = Date.now();
     this.state.recents.add(query);
     this.trigger(this.state);
   },
