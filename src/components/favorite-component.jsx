@@ -1,6 +1,9 @@
 const React = require('react');
+const FontAwesome = require('react-fontawesome');
 const PropTypes = require('prop-types');
 const Actions = require('../actions');
+const QueryComponent = require('./query-component');
+
 
 class FavoriteComponent extends React.Component {
   constructor(props) {
@@ -26,24 +29,14 @@ class FavoriteComponent extends React.Component {
   render() {
     const attributes = this.props.model.serialize();
     return (
-      <div className="query-history-query">
-        <p className="query-history-title">{this.props.model._name}</p>
-        <ul>
-          {Object.keys(attributes).map(function(key, i) {
-            return (
-              <li key={i}>{key}</li>
-            );
-          })}
-        </ul>
-        <ul>
-          <li id="COPY-FAVORITE">
-            <span href="#" onClick={this.copyQuery}>Copy Favorite</span>
-          </li>
-          <li id="DELETE-FAVORITE">
-            <span href="#" onClick={this.deleteFavorite}>Delete Favorite</span>
-          </li>
-        </ul>
-        <p><i>Contents: {JSON.stringify(this.props.model, null, ' ')}</i></p>
+      <div className="query-history-favorite-query">
+        <QueryComponent attributes={attributes} title={this.props.model._name}/>
+        <button className="query-history-copy" onClick={this.copyQuery}>
+          <FontAwesome name="copy" className="query-history-button-icon"/>
+        </button>
+        <button className="query-history-delete" onClick={this.deleteFavorite}>
+          <FontAwesome name="trash" className="query-history-button-icon"/>
+        </button>
       </div>
     );
   }

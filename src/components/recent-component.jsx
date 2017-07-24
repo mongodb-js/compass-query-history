@@ -1,6 +1,8 @@
 const React = require('react');
+const FontAwesome = require('react-fontawesome');
 const PropTypes = require('prop-types');
 const Actions = require('../actions');
+const QueryComponent = require('./query-component');
 
 // const debug = require('debug')('mongodb-compass:query-history:list-component');
 
@@ -32,20 +34,20 @@ class RecentComponent extends React.Component {
    * @returns {React.Component} The rendered component.
    */
   render() {
+    const attributes = this.props.model.serialize();
     return (
-      <div className="query-history-recent">
-        <p><i>A recent query: + {JSON.stringify(this.props.model, null, ' ')}</i></p>
-        <ul>
-          <li id="SAVE-RECENT">
-            <span href="#" onClick={this.saveRecent}>Save Recent</span>
-          </li>
-          <li id="COPY-RECENT">
-            <span href="#" onClick={this.copyQuery}>Copy Recent</span>
-          </li>
-          <li id="DELETE-RECENT">
-            <span href="#" onClick={this.deleteRecent}>Delete Recent</span>
-          </li>
-        </ul>
+      <div className="query-history-recent-query">
+        <QueryComponent attributes={attributes}
+                        title={this.props.model._lastExecuted.toString()}/>
+        <button className="query-history-save" onClick={this.saveRecent}>
+          <FontAwesome name="star-o" className="query-history-button-icon"/>
+        </button>
+        <button className="query-history-copy" onClick={this.copyQuery}>
+          <FontAwesome name="clipboard" className="query-history-button-icon"/>
+        </button>
+        <button className="query-history-delete" onClick={this.deleteFavorite}>
+          <FontAwesome name="trash" className="query-history-button-icon"/>
+        </button>
       </div>
     );
   }
