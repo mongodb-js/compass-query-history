@@ -1,12 +1,12 @@
 const Collection = require('ampersand-rest-collection');
 const RecentQuery = require('./query');
-// const storageMixin = require('storage-mixin');
-// const electronApp = require('electron').remote.app;
+const storageMixin = require('storage-mixin');
+const electronApp = require('electron').remote.app;
 
 /**
  * Represents a collection of recent queries.
  */
-const RecentQueryCollection = Collection.extend({// storageMixin, {
+const RecentQueryCollection = Collection.extend(storageMixin, {
   /**
    * Contains RecentQuery models.
    */
@@ -15,10 +15,10 @@ const RecentQueryCollection = Collection.extend({// storageMixin, {
    * Namespace to store in.
    */
   namespace: 'RecentQueries',
-  // storage: {
-  //   backend: 'local',
-  //   appName: electronApp.getName()
-  // },
+  storage: {
+    backend: 'local',
+    appName: electronApp.getName()
+  },
   mainIndex: '_id',
   comparator: (recent) => {
     return -recent._lastExecuted;
