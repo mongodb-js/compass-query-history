@@ -48,14 +48,7 @@ const FavoritesListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    const favorites = new FavoriteQueryCollection([
-      new FavoriteQuery({ sort: {'x': 1}, limit: 1, _dateSaved: Date.now(),
-        filter: {x: 'example 1'}, _name: 'favorite 1'}),
-      new FavoriteQuery({ sort: {'x': 1}, limit: 1, _dateSaved: Date.now(),
-        filter: {x: 'example 2'}, _name: 'favorite 2'}),
-      new FavoriteQuery({ sort: {'x': 1}, limit: 1, _dateSaved: Date.now(),
-        filter: {x: 'example 3'}, _name: 'favorite 3'})
-    ]);
+    const favorites = new FavoriteQueryCollection([]);
     return {
       favorites: favorites,
       current_favorite: null
