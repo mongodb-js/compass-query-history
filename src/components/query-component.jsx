@@ -11,14 +11,14 @@ class QueryComponent extends React.Component {
   render() {
     const attributes = this.props.attributes;
     return (
-      <div className="query-history-query">
-        <p className="query-history-title">{this.props.title}</p>
+      <div className="query-history-card">
+        <div className="query-history-card-title">{this.props.title}</div>
         <ul>
           {Object.keys(attributes).map(function(key, i) {
             if (key.charAt(0) !== '_') {
               return (
                 <li key={i}>
-                  <h>{key}</h>
+                  <h className="query-history-card-label">{key}</h>
                   <p>{JSON.stringify(attributes[key], null, 0)}</p>
                 </li>
               );

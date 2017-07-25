@@ -59,7 +59,6 @@ class SidebarComponent extends React.Component {
         </StoreConnector>
         {this.props.showing === 'favorites' ? this.renderFavorites() : null}
         {this.props.showing === 'recent' ? this.renderRecents() : null}
-        <button onClick={this.addRecent}>Click here to add a sample recent query</button>
       </div>
     );
   }

@@ -4,15 +4,17 @@
   order: 3;
   background-color: #F5F6F7;
   border-left: solid 1px #DDDDDD;
+
   &-sidebar-component {
   	width: 100%;
-	ul {
-	  list-style-type : none;
-	  padding-left:0;
-	}
+
+  	ul {
+  	  list-style-type : none;
+  	  padding-left:0;
+  	}
   }
 
-  &-recent {
+  &-card {
   	background: #FFFFFF;
     box-shadow: 0 2px 20px 0 rgba(0,0,0,0.10);
     border-radius: 3px;
@@ -20,45 +22,50 @@
     margin: auto;
     margin-bottom: 10px;
     padding: 10px;
+    color: #494747;
 
+    // Scrollable List
     &-list {
     	height: 100%;
     	overflow-y: scroll;
     }
 
+    // Code Snippet
     p {
 	    background: #F5F6F7;
 	    box-shadow: inset 2px 0 0 0 #E8E8EA;
-	    padding: 10px;
+	    padding: 5px 10px 5px 10px;
     }
+
+    &-title {
+      font-weight: bold;
+      font-size: 12px;
+      color: #494747;
+    }
+
+    &-label {
+      font-weight: bold;
+      font-size: 11px;
+      color: #A09F9E;
+      text-transform: uppercase;
+    }
+  }
+
+  &-button {
+    padding: 0;
+    width: 25px;
+    margin: 5px;
+  }
+
+  &-recent-list, &-favorites-list {
+    height: 100%;
+    overflow-y: scroll;
   }
 }
 
-
-.query-history-header-component {
-    display: inline-block;
-    position: relative;
-    background: #F5F6F7;
-    box-shadow: 0 2px 4px 0 rgba(221,221,221,0.50),
-        inset 0 -1px 0 0 rgba(235,235,237,0.50),
-        inset 0 1px 0 0 rgba(235,235,237,0.50);
-    width: 100%;
-    &-favorites {
-        float: left;
-    }
-    &-recent {
-        float: left;
-    }
-    &-close {
-        float: right;
-    }
-}
-
 .query-history-sidebar-component {
-  padding: 10px;
   ul {
     list-style-type : none;
     padding-left:0;
   }
-  width: 300px;
 }

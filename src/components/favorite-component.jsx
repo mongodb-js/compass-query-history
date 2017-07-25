@@ -30,13 +30,15 @@ class FavoriteComponent extends React.Component {
     const attributes = this.props.model.serialize();
     return (
       <div className="query-history-favorite-query">
+        <div className="btn-group">
+          <button className="btn btn-sm btn-default query-history-button" onClick={this.copyQuery}>
+            <FontAwesome name="copy"/>
+          </button>
+          <button className="btn btn-sm btn-default query-history-button" onClick={this.deleteFavorite}>
+            <FontAwesome name="trash"/>
+          </button>
+        </div>
         <QueryComponent attributes={attributes} title={this.props.model._name}/>
-        <button className="query-history-copy" onClick={this.copyQuery}>
-          <FontAwesome name="copy" className="query-history-button-icon"/>
-        </button>
-        <button className="query-history-delete" onClick={this.deleteFavorite}>
-          <FontAwesome name="trash" className="query-history-button-icon"/>
-        </button>
       </div>
     );
   }

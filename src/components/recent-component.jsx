@@ -37,17 +37,19 @@ class RecentComponent extends React.Component {
     const attributes = this.props.model.serialize();
     return (
       <div className="query-history-recent-query">
+        <div className="btn-group">
+          <button className="btn btn-sm btn-default query-history-button" onClick={this.saveRecent}>
+            <FontAwesome name="star-o"/>
+          </button>
+          <button className="btn btn-sm btn-default query-history-button" onClick={this.copyQuery}>
+            <FontAwesome name="clipboard"/>
+          </button>
+          <button className="btn btn-sm btn-default query-history-button" onClick={this.deleteFavorite}>
+            <FontAwesome name="trash"/>
+          </button>
+        </div>
         <QueryComponent attributes={attributes}
                         title={this.props.model._lastExecuted.toString()}/>
-        <button className="query-history-save" onClick={this.saveRecent}>
-          <FontAwesome name="star-o" className="query-history-button-icon"/>
-        </button>
-        <button className="query-history-copy" onClick={this.copyQuery}>
-          <FontAwesome name="clipboard" className="query-history-button-icon"/>
-        </button>
-        <button className="query-history-delete" onClick={this.deleteFavorite}>
-          <FontAwesome name="trash" className="query-history-button-icon"/>
-        </button>
       </div>
     );
   }
