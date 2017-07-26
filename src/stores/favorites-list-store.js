@@ -49,7 +49,7 @@ const FavoritesListStore = Reflux.createStore({
 
   deleteFavorite(query) {
     this.state.favorites.remove(query._id);
-    query.desroy();
+    query.destroy();
     this.trigger(this.state);
   },
 
