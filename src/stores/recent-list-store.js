@@ -32,6 +32,10 @@ const RecentListStore = Reflux.createStore({
     }
   },
 
+  onConnected() {
+    this.state.recents.fetch({ reset: true });
+  },
+
   addRecent(recent) {
     this._filterDefaults(recent);
     if (_.isEmpty(recent) || ('queryState' in recent && recent.queryState === 'reset')) {
@@ -45,11 +49,13 @@ const RecentListStore = Reflux.createStore({
     const query = new RecentQuery(recent);
     query._lastExecuted = Date.now();
     this.state.recents.add(query);
+    query.save();
     this.trigger(this.state);
   },
 
   deleteRecent(query) {
     this.state.recents.remove(query._id);
+    query.destroy();
     this.trigger(this.state);
   },
 
@@ -64,9 +70,8 @@ const RecentListStore = Reflux.createStore({
   },
 
   getInitialState() {
-    const recents = new RecentQueryCollection();
     return {
-      recents: recents
+      recents: new RecentQueryCollection()
     };
   }
 });
