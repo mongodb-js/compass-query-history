@@ -16,10 +16,13 @@ class RecentListComponent extends React.Component {
    * @returns {React.Component} The rendered component.
    */
   render() {
+    const filtered = this.props.recents.filter((recent) => {
+      return recent._ns === this.props.ns;
+    });
     return (
       <div className="query-history-recent-list">
         <ul>
-          {this.props.recents.map(function(item, i) {
+          {filtered.map(function(item, i) {
             return (
               <RecentComponent key={i} model={item}/>
             );
@@ -31,11 +34,13 @@ class RecentListComponent extends React.Component {
 }
 
 RecentListComponent.propTypes = {
-  recents: PropTypes.object
+  recents: PropTypes.object,
+  ns: PropTypes.string
 };
 
 RecentListComponent.defaultProps = {
-  recents: null
+  recents: null,
+  ns: ''
 };
 
 RecentListComponent.displayName = 'QueryHistoryRecentListComponent';

@@ -21,7 +21,7 @@ class SidebarComponent extends React.Component {
   renderFavorites() {
     return (
       <StoreConnector store={FavoritesListStore}>
-        <FavoritesListComponent/>
+        <FavoritesListComponent ns={this.props.ns}/>
       </StoreConnector>
     );
   }
@@ -29,7 +29,7 @@ class SidebarComponent extends React.Component {
   renderRecents() {
     return (
       <StoreConnector store={RecentListStore}>
-        <RecentListComponent/>
+        <RecentListComponent ns={this.props.ns}/>
       </StoreConnector>
     );
   }
