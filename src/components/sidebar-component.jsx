@@ -59,12 +59,14 @@ class SidebarComponent extends React.Component {
 
 SidebarComponent.propTypes = {
   showing: PropTypes.oneOf(['recent', 'favorites']),
-  collapsed: PropTypes.bool
+  collapsed: PropTypes.bool,
+  ns: PropTypes.string
 };
 
 SidebarComponent.defaultProps = {
   showing: 'recent',
-  collapsed: false
+  collapsed: false,
+  ns: ''
 };
 
 
