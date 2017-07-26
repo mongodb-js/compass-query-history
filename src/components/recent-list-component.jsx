@@ -6,10 +6,6 @@ const RecentComponent = require('./recent-component');
 // const debug = require('debug')('mongodb-compass:query-history:recent-list-component');
 
 class RecentListComponent extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-
   /**
    * Render RecentList component.
    *

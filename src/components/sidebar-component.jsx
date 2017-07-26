@@ -12,12 +12,6 @@ const FavoritesListStore = require('../stores/favorites-list-store');
 // const debug = require('debug')('mongodb-compass:query-history:sidebar-component');
 
 class SidebarComponent extends React.Component {
-  constructor(props) {
-    super(props);
-    this.renderRecents = this.renderRecents.bind(this);
-    this.renderFavorites = this.renderFavorites.bind(this);
-  }
-
   renderFavorites() {
     return (
       <StoreConnector store={FavoritesListStore}>

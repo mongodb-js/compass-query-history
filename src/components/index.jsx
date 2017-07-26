@@ -16,7 +16,7 @@ class QueryHistoryComponent extends React.Component {
     return (
         <StoreConnector store={Store}>
           <SidebarComponent
-            actios={Actions} {...this.props} />
+            actions={Actions} {...this.props} />
         </StoreConnector>
     );
   }
