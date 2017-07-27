@@ -1,7 +1,8 @@
 const Reflux = require('reflux');
 const Actions = require('../actions');
 const StateMixin = require('reflux-state-mixin');
-const _ = require('lodash');
+
+const mongodbns = require('mongodb-ns');
 
 /**
  * Query History store.
@@ -56,24 +57,25 @@ const SidebarStore = Reflux.createStore({
   },
 
   onCollectionChanged(namespace) {
-    if (!_.includes(namespace, '.')) {
+    const nsobj = mongodbns(namespace);
+    if (nsobj.collection === '' || nsobj.ns === this.state.ns.ns) {
       return;
     }
     this.setState({
-      ns: namespace
+      ns: nsobj
     });
   },
 
   onDatabaseChanged(namespace) {
-    if (!this.state.ns) {
+    const nsobj = mongodbns(namespace);
+    if (!this.state.ns || this.state.ns.ns === nsobj.ns) {
       return;
     }
-    if (!_.includes(namespace, '.')) {
-      const coll = this.state.ns.split('.')[1];
-      namespace = namespace + '.' + coll;
+    if (nsobj.collection === '') {
+      nsobj.collection = this.state.ns.collection;
     }
     this.setState({
-      ns: namespace
+      ns: nsobj
     });
   },
 
@@ -117,7 +119,7 @@ const SidebarStore = Reflux.createStore({
     return {
       showing: 'recent',
       collapsed: true,
-      ns: ''
+      ns: mongodbns('')
     };
   }
 });
