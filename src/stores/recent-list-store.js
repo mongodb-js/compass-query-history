@@ -7,7 +7,7 @@ const RecentQueryCollection = require('../models/recent-query-collection');
 
 const electron = require('electron');
 const remote = electron.remote;
-const Clipboard = remote.clipboard;
+const clipboard = remote.clipboard;
 
 const TOTAL_RECENTS = 30;
 const ALLOWED = ['filter', 'project', 'sort', 'skip', 'limit'];
@@ -93,7 +93,7 @@ const RecentListStore = Reflux.createStore({
       .filter(key => key.charAt(0) === '_')
       .forEach(key => delete attributes[key]);
 
-    Clipboard.writeText(JSON.stringify(attributes, null, ' '));
+    clipboard.writeText(JSON.stringify(attributes, null, ' '));
   },
 
   getInitialState() {
