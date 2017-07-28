@@ -1,13 +1,15 @@
 const Reflux = require('reflux');
 const Actions = require('../actions');
-const StateMixin = require('reflux-state-mixin');
 const _ = require('lodash');
-const RecentQuery = require('../models/recent-query');
-const RecentQueryCollection = require('../models/recent-query-collection');
 
+const StateMixin = require('reflux-state-mixin');
 const electron = require('electron');
 const remote = electron.remote;
 const clipboard = remote.clipboard;
+
+const RecentQuery = require('../models/recent-query');
+const RecentQueryCollection = require('../models/recent-query-collection');
+
 
 const TOTAL_RECENTS = 30;
 const ALLOWED = ['filter', 'project', 'sort', 'skip', 'limit'];
