@@ -11,6 +11,9 @@ const QueryHistoryActions = require('./lib/actions');
 
 /**
  * Activate all the components in the Query History package.
+ *
+ * @param {object} appRegistry: In order to register shared components, stores,
+ * and actions.
  */
 function activate(appRegistry) {
   appRegistry.registerStore('QueryHistory.Store', QueryHistoryStore);
@@ -23,6 +26,9 @@ function activate(appRegistry) {
 
 /**
  * Deactivate all the components in the Query History package.
+ *
+ * @param {object} appRegistry: In order to deregister shared components,
+ * stores, and actions.
  */
 function deactivate(appRegistry) {
   appRegistry.deregisterStore('QueryHistory.Store');
