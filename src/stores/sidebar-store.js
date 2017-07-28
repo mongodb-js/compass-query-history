@@ -57,9 +57,10 @@ const SidebarStore = Reflux.createStore({
    *
    * @param {object} query - the new query.
    */
-  onQueryChanged(query) {
-    Actions.addRecent(query);
-  },
+  // Commented out because of https://jira.mongodb.org/browse/COMPASS-1619s
+  // onQueryChanged(query) {
+  //   Actions.addRecent(query);
+  // },
 
   /**
    * Plugin lifecycle method that is called when the namespace changes in Compass.
