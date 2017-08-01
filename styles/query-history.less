@@ -28,6 +28,8 @@
     .btn-group {
       float: right;
       visibility: hidden;
+      height: 28px;
+      overflow: hidden;
     }
 
     &-active {
@@ -117,6 +119,7 @@
       max-height: 250px;
       overflow-y: scroll;
       word-wrap: break-word;
+      animation: 600ms card;
     }
 
     &-title {
@@ -174,4 +177,22 @@
 @keyframes slidein {
   from { width: 0px }
   to   { width: 325px }
+}
+
+// Card loading animation
+@keyframes card {
+  0% {
+    color: #F5F6F7;
+    height: 30px; 
+  }
+
+  80% {
+    color: #F5F6F7;
+    height: 30px;
+  }
+
+  100% {
+    color: #494747;
+    height: 100%; 
+  }
 }
