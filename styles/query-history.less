@@ -7,12 +7,12 @@
   border-left: solid 1px #DDDDDD;
 
   &-sidebar-component {
-  	width: 100%;
+    width: 100%;
 
-  	ul {
-  	  list-style-type : none;
-  	  padding-left:0;
-  	}
+    ul {
+      list-style-type : none;
+      padding-left:0;
+    }
   }
 
   &-recent-query, &-favorite-query, &-zero-state {
@@ -22,11 +22,18 @@
     width: 95%;
     margin: auto;
     margin-bottom: 10px;
-    padding: 10px;
+    padding: 11px;
+    outline: 0;
 
     .btn-group {
       float: right;
       visibility: hidden;
+    }
+
+    &-active {
+      border: 1px solid #5CAEEB;
+      box-shadow: 0 2px 6px 0 rgba(78,175,233,0.30);
+      padding: 10px;
     }
 
     &:hover {
@@ -42,23 +49,28 @@
     }
 
     &-form {
-      box-shadow: 0 2px 6px 0 rgba(78,175,233,0.30);
       float: left;
 
       &-input {
-        border: 1px solid #5CAEEB;
+        border: 1px solid #BEBCB9;
         border-radius: 2px;
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
         padding: 0px 5px 0px 5px;
         outline: 0;
-        width: 177px;
+        width: 175px;
         height: 28px;
+
+        &:focus, &:focus + .query-history-favorite-query-form-save {
+          border-color: #5CAEEB;
+          color: #006CBC;
+
+        }
       }
 
       &-save {
         background-color: #FFFFFF;
-        border: 1px solid #5CAEEB;
+        border: 1px solid #BEBCB9;
         border-left: 0;
         border-top-right-radius: 2px;
         border-bottom-right-radius: 2px;
@@ -66,7 +78,6 @@
         font-size: 12px;
         text-transform: uppercase;
         outline: 0;
-        color: #006CBC;
         height: 28px;
         padding: 0;
         width: 50px;
@@ -100,9 +111,9 @@
 
     // Code Snippet
     p {
-	    background: #F5F6F7;
-	    box-shadow: inset 2px 0 0 0 #E8E8EA;
-	    padding: 5px 10px 5px 10px;
+      background: #F5F6F7;
+      box-shadow: inset 2px 0 0 0 #E8E8EA;
+      padding: 5px 10px 5px 10px;
       max-height: 250px;
       overflow-y: scroll;
       word-wrap: break-word;
@@ -152,7 +163,6 @@
     padding-top: 10px;
   }
 }
-
 .query-history-sidebar-component {
   ul {
     list-style-type : none;

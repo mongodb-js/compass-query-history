@@ -40,10 +40,10 @@ class SavingComponent extends React.Component {
         .filter(key => key.charAt(0) === '_')
         .forEach(key => delete attributes[key]);
       return (
-        <div className="query-history-favorite-query">
+        <div className="query-history-favorite-query query-history-favorite-query-active">
           <div className="query-history-favorite-query-header">
-            <form onSubmit={this.handleSubmit} className="query-history-favorite-query-form">
-              <input type="text" className="query-history-favorite-query-form-input" placeholder="Favorite Name" onChange={this.handleChange}/>
+            <form onSubmit={this.handleSubmit} className="query-history-favorite-query-form" tabIndex="0">
+              <input type="text" className="query-history-favorite-query-form-input" placeholder="Favorite Name" onChange={this.handleChange} autoFocus/>
               <input type="submit" className="query-history-favorite-query-form-save" value="Save"/>
             </form>
             <button className="btn btn-default btn-xs query-history-favorite-query-form-cancel"
@@ -59,7 +59,6 @@ class SavingComponent extends React.Component {
     return null;
   }
 }
-
 SavingComponent.propTypes = {
   model: PropTypes.object
 };
