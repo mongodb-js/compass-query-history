@@ -1,4 +1,4 @@
-const Reflux = require('reflux');
+import Reflux from 'reflux';
 
 const Actions = Reflux.createActions([
   /**
@@ -19,4 +19,5 @@ const Actions = Reflux.createActions([
   'namespaceChanged'
 ]);
 
-module.exports = Actions;
+export default Actions;
+export { Actions };
