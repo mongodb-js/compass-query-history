@@ -13,7 +13,8 @@ class FavoritesListItem extends PureComponent {
 
   static propTypes = {
     model: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    className: PropTypes.string
   };
 
   static defaultProps = {};
@@ -30,7 +31,7 @@ class FavoritesListItem extends PureComponent {
 
   render() {
     const { model, className } = this.props;
-    
+
     const attributes = this.props.model.getAttributes({ props: true });
 
     Object.keys(attributes)
@@ -64,7 +65,7 @@ class FavoritesListItem extends PureComponent {
         </CardBody>
       </Card>
     );
-  };
+  }
 }
 
 export default FavoritesListItem;

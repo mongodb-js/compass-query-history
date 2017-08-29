@@ -10,4 +10,4 @@ export {
   RecentQuery,
   FavoriteQueryCollection,
   RecentQueryCollection
-}
+};

@@ -10,7 +10,7 @@ import { RecentList } from 'components/recent';
 import { FavoritesList } from 'components/favorites';
 
 // Stores
-import { HeaderStore, RecentListStore, FavoritesListStore }  from 'stores';
+import { HeaderStore, RecentListStore, FavoritesListStore } from 'stores';
 import styles from './SideBar.less';
 
 class SideBar extends PureComponent {
@@ -52,28 +52,28 @@ class SideBar extends PureComponent {
   render() {
     const { collapsed, showing, actions } = this.props;
 
-    if (!collapsed) {
-      return (
-        <div
-          data-test-id="query-history-sidebar"
-          className={classnames(styles.component)}>
-          <div className={classnames(styles.sidebar)}>
-            <StoreConnector store={HeaderStore}>
-              <Header
-                data-test-id="query-history-sidebar-header"
-                actions={actions}
-                showing={showing}/>
-            </StoreConnector>
-
-            {showing === 'favorites' ? this.renderFavorites() : null}
-            {showing === 'recent' ? this.renderRecents() : null}
-          </div>
-        </div>
-      );
-    } else {
+    if (collapsed) {
       return null;
     }
-  };
+
+    return (
+      <div
+        data-test-id="query-history-sidebar"
+        className={classnames(styles.component)}>
+        <div className={classnames(styles.sidebar)}>
+          <StoreConnector store={HeaderStore}>
+            <Header
+              data-test-id="query-history-sidebar-header"
+              actions={actions}
+              showing={showing}/>
+          </StoreConnector>
+
+          {showing === 'favorites' ? this.renderFavorites() : null}
+          {showing === 'recent' ? this.renderRecents() : null}
+        </div>
+      </div>
+    );
+  }
 }
 
 export default SideBar;

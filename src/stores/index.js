@@ -8,4 +8,4 @@ export {
   HeaderStore,
   FavoritesListStore,
   RecentListStore
-}
+};

@@ -1,5 +1,4 @@
 import React, { PureComponent } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import Actions from 'actions';
@@ -28,16 +27,16 @@ class Query extends PureComponent {
    * as the default placeholder will not display.
    **/
   populateQuery = () => {
-      Actions.runQuery(this.props.attributes);
+    Actions.runQuery(this.props.attributes);
   };
 
   renderAttr = (attrKey, index) => {
     const { attributes } = this.props;
-    
+
     return (
       <li key={index}>
         <label
-          data-test-id="query-history-query-label" 
+          data-test-id="query-history-query-label"
           className={classnames(styles.label)}>{attrKey}</label>
         <Code
           data-test-id="query-history-query-code"

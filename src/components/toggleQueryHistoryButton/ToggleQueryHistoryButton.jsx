@@ -17,7 +17,7 @@ class ToggleQueryHistoryButton extends PureComponent {
 
   handleCollapse = () => {
     Actions.toggleCollapse();
-  }
+  };
 
   render() {
     return (

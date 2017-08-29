@@ -8,22 +8,22 @@ import Query from 'components/query';
 import styles from './Saving.less';
 
 class Saving extends PureComponent {
-  constructor(props) {
-    super(props);
-
-    this._name = (props.model) ? props.model._lastExecuted.toString() : null;
-  }
-
   static displayName = 'QueryHistorySaving';
 
   static propTypes = {
     model: PropTypes.object,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    className: PropTypes.string
   };
 
   static defaultProps = {
     model: null
   };
+
+  constructor(props) {
+    super(props);
+    this._name = (props.model) ? props.model._lastExecuted.toString() : null;
+  }
 
   cancel = () => {
     this.props.actions.cancelSave();
@@ -57,12 +57,12 @@ class Saving extends PureComponent {
   render() {
     const { model, className } = this.props;
 
-    if(model === null) {
+    if (model === null) {
       return null;
     }
 
     const attributes = this.props.model.serialize();
-    
+
     Object.keys(attributes)
       .filter(key => key.charAt(0) === '_')
       .forEach(key => delete attributes[key]);
@@ -73,7 +73,7 @@ class Saving extends PureComponent {
         <CardHeader
           title={this.renderSaveForm()}
           data-test-id="query-history-saving-header"
-          actionsVisible={true}>
+          actionsVisible>
           <button
             data-test-id="query-history-saving-form-button-save"
             className={classnames('btn', 'btn-sm', 'btn-primary', styles.button)}
@@ -96,7 +96,7 @@ class Saving extends PureComponent {
         </CardBody>
       </Card>
     );
-  };
+  }
 }
 
 export default Saving;

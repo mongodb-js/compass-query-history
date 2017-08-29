@@ -1,7 +1,6 @@
 import { remote } from 'electron';
-import Query from './Query'
+import Query from './Query';
 import storageMixin from 'storage-mixin';
-
 
 /**
  * A model that represents a favorite MongoDB query.

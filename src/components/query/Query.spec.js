@@ -3,7 +3,6 @@ import { shallow } from 'enzyme';
 
 import Query from 'components/query';
 import Code from 'components/code';
-import styles from './Query.less';
 
 describe('Query [Component]', () => {
   const title = 'Testing';
@@ -11,15 +10,15 @@ describe('Query [Component]', () => {
   let component;
 
   beforeEach((done) => {
-     component = shallow(<Query title={title} attributes={attributes} />);
-     done();
+    component = shallow(<Query title={title} attributes={attributes} />);
+    done();
   });
 
   afterEach((done) => {
     component = null;
     done();
   });
-  
+
   describe('#rendering', () => {
     it('renders the attributes list', () => {
       const node = component.find('[data-test-id="query-history-query-attributes"]');

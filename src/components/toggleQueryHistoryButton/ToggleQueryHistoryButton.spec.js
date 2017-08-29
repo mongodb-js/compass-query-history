@@ -12,12 +12,12 @@ describe('ToggleQueryHistoryButton [Component]', () => {
     beforeEach((done) => {
       component = shallow(<ToggleQueryHistoryButton />);
       done();
-    })
+    });
 
     afterEach((done) => {
       component = null;
       done();
-    })
+    });
 
     it('renders a button', () => {
       const node = component.find('[data-test-id="query-history-button"]');
@@ -34,6 +34,6 @@ describe('ToggleQueryHistoryButton [Component]', () => {
 
       expect(node).to.have.type(FontAwesome);
       expect(node.prop('name')).to.equal('history');
-    })
+    });
   });
 });

@@ -21,13 +21,13 @@ describe('Header [Component]', () => {
     actions = null;
     done();
   });
-  
+
   describe('#rendering', () => {
     let component;
 
     beforeEach((done) => {
-       component = shallow(<Header actions={actions} />);
-       done();
+      component = shallow(<Header actions={actions} />);
+      done();
     });
 
     afterEach((done) => {
@@ -59,15 +59,13 @@ describe('Header [Component]', () => {
       const node = component.find('[data-test-id="query-history-button-close-panel"]');
 
       node.simulate('click');
-      actions.collapse.should.have.been.calledOnce;
+      actions.collapse.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
 
     describe('when viewing the Recent Queries tab', () => {
-      let component;
-
       beforeEach((done) => {
-         component = mount(<Header actions={actions} showing="recent" />);
-         done();
+        component = mount(<Header actions={actions} showing="recent" />);
+        done();
       });
 
       afterEach((done) => {
@@ -76,26 +74,24 @@ describe('Header [Component]', () => {
       });
 
       it('it should switch to the favorites tab when the Favorites button is clicked', () => {
-        const node = component.find({ 'data-test-id': "undefined-favorites" });
+        const node = component.find({ 'data-test-id': 'undefined-favorites' });
 
         node.simulate('click');
-        actions.showFavorites.should.have.been.calledOnce;
+        actions.showFavorites.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
       });
 
       it('it should be a no-op twhen the Recents button is clicked', () => {
-        const node = component.find({ 'data-test-id': "undefined-recent" });
-        
+        const node = component.find({ 'data-test-id': 'undefined-recent' });
+
         node.simulate('click');
-        actions.showFavorites.should.not.have.been.calledOnce;
+        actions.showFavorites.should.not.have.been.calledOnce; // eslint-disable-line no-unused-expressions
       });
     });
 
     describe('when viewing the Favorites tab', () => {
-      let component;
-
       beforeEach((done) => {
-         component = mount(<Header actions={actions} showing="favorites" />);
-         done();
+        component = mount(<Header actions={actions} showing="favorites" />);
+        done();
       });
 
       afterEach((done) => {
@@ -104,17 +100,17 @@ describe('Header [Component]', () => {
       });
 
       it('it should switch to the recent tab when the Recents button is clicked', () => {
-        const node = component.find({ 'data-test-id': "undefined-recent" });
+        const node = component.find({ 'data-test-id': 'undefined-recent' });
 
         node.simulate('click');
-        actions.showRecent.should.have.been.calledOnce;
+        actions.showRecent.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
       });
 
       it('it should be a no-op twhen the Favorites button is clicked', () => {
-        const node = component.find({ 'data-test-id': "undefined-favorites" });
-        
+        const node = component.find({ 'data-test-id': 'undefined-favorites' });
+
         node.simulate('click');
-        actions.showRecent.should.not.have.been.calledOnce;
+        actions.showRecent.should.not.have.been.calledOnce; // eslint-disable-line no-unused-expressions
       });
     });
   });

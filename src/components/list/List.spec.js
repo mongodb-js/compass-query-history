@@ -8,11 +8,11 @@ const ListComponent = listFactory(
   () => (<div data-test-id="mock-saving" />)
 );
 
-describe('listFactory [Component]', () => {  
+describe('listFactory [Component]', () => {
   const items = [
     { _ns: 'test', _name: 'foo' },
     { _ns: 'test', _name: 'bar' },
-    { _ns: 'test', _name: 'bazz' },
+    { _ns: 'test', _name: 'bazz' }
   ];
 
   describe('#rendering', () => {
@@ -31,35 +31,35 @@ describe('listFactory [Component]', () => {
     });
 
     describe('when there are no items to render', () => {
-        it('the list is not rendered with any children', () => {
-          const component = shallow(<ListComponent items={[]} ns={{ns: 'test'}} actions={{}} />);
-          const node = component.find(`.${styles.items}`);
+      it('the list is not rendered with any children', () => {
+        const component = shallow(<ListComponent items={[]} ns={{ns: 'test'}} actions={{}} />);
+        const node = component.find(`.${styles.items}`);
 
-          expect(node.children()).to.have.length(0);
-        });
+        expect(node.children()).to.have.length(0);
+      });
 
-        it('renders a zero state title', () => {
-          const component = shallow(<ListComponent items={[]} ns={{ns: 'test'}} actions={{}} zeroStateTitle="Foo" />);
-          const node = component.find(`.${styles['zeroState-title']}`);
-          
-          expect(node.text()).to.have.equal('Foo');
-        });
+      it('renders a zero state title', () => {
+        const component = shallow(<ListComponent items={[]} ns={{ns: 'test'}} actions={{}} zeroStateTitle="Foo" />);
+        const node = component.find(`.${styles['zeroState-title']}`);
+
+        expect(node.text()).to.have.equal('Foo');
+      });
     });
 
     describe('when there are items to render', () => {
-        it('the list is rendered with the correct number of children', () => {
-          const component = shallow(<ListComponent items={items} ns={{ns: 'test'}} actions={{}} />);
-          const node = component.find(`.${styles.items}`);
+      it('the list is rendered with the correct number of children', () => {
+        const component = shallow(<ListComponent items={items} ns={{ns: 'test'}} actions={{}} />);
+        const node = component.find(`.${styles.items}`);
 
-          expect(node.children()).to.have.length(3);
-        });
+        expect(node.children()).to.have.length(3);
+      });
 
-        it('does not render a zero state title', () => {
-          const component = shallow(<ListComponent items={items} ns={{ns: 'test'}} actions={{}} zeroStateTitle="Foo" />);
-          const node = component.find(`.${styles['zeroState-title']}`);
+      it('does not render a zero state title', () => {
+        const component = shallow(<ListComponent items={items} ns={{ns: 'test'}} actions={{}} zeroStateTitle="Foo" />);
+        const node = component.find(`.${styles['zeroState-title']}`);
 
-          expect(node).to.have.length(0);
-        });
+        expect(node).to.have.length(0);
+      });
     });
 
     describe('when we have a current model', () => {

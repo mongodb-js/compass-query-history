@@ -32,10 +32,10 @@ describe('FavoritesListItem [Component]', () => {
   afterEach((done) => {
     actions = null;
     component = null;
-    
+
     done();
   });
-  
+
   describe('#rendering', () => {
     it('renders a Card component as its root node', () => {
       expect(component.type()).to.equal(Card);
@@ -48,7 +48,7 @@ describe('FavoritesListItem [Component]', () => {
 
     it('CardHeader should contain two buttons', () => {
       const node = component.find(CardHeader);
-      
+
       expect(node.children()).to.have.length(2);
       expect(node.childAt(0).type()).to.equal('button');
       expect(node.childAt(1).type()).to.equal('button');
@@ -61,7 +61,7 @@ describe('FavoritesListItem [Component]', () => {
 
     it('CardBody should contain a Query component', () => {
       const node = component.find(CardBody);
-      
+
       expect(node.children()).to.have.length(1);
       expect(node.childAt(0).type()).to.equal(Query);
     });
@@ -77,19 +77,17 @@ describe('FavoritesListItem [Component]', () => {
 
   describe('#behavior', () => {
     it('should call the copyQuery action when the copy query button is clicked', () => {
-      // TODO: Update selector following CSS modules refactor
       const node = component.find('[data-test-id="query-history-button-copy-query"]');
       node.simulate('click');
 
-      actions.copyQuery.should.have.been.calledOnce;
+      actions.copyQuery.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
 
     it('should call the deleteFavorite action when the copy query button is clicked', () => {
-      // TODO: Update selector following CSS modules refactor
       const node = component.find('[data-test-id="query-history-button-delete-fav"]');
       node.simulate('click');
 
-      actions.deleteFavorite.should.have.been.calledOnce;
+      actions.deleteFavorite.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
   });
 });

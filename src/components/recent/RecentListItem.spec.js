@@ -33,10 +33,10 @@ describe('RecentListItem [Component]', () => {
   afterEach((done) => {
     actions = null;
     component = null;
-    
+
     done();
   });
-  
+
   describe('#rendering', () => {
     it('renders a Card component as its root node', () => {
       expect(component.type()).to.equal(Card);
@@ -49,7 +49,7 @@ describe('RecentListItem [Component]', () => {
 
     it('CardHeader should contain three buttons', () => {
       const node = component.find(CardHeader);
-      
+
       expect(node.children()).to.have.length(3);
       expect(node.childAt(0).type()).to.equal('button');
       expect(node.childAt(1).type()).to.equal('button');
@@ -63,14 +63,12 @@ describe('RecentListItem [Component]', () => {
 
     it('CardBody should contain a Query component', () => {
       const node = component.find(CardBody);
-      
+
       expect(node.children()).to.have.length(1);
-      // TODO: Update find with component reference when we fix the error overcome by mocking out the query component
       expect(node.childAt(0).type()).to.equal(Query);
     });
 
     it('filters out _ prefixed attributes from the query component', () => {
-      // TODO: Update find with component reference when we fix the error overcome by mocking out the query component
       const node = component.find(Query);
       const queryAttributes = node.prop('attributes');
 
@@ -81,27 +79,24 @@ describe('RecentListItem [Component]', () => {
 
   describe('#behavior', () => {
     it('should call the saveRecent action when the favorite query button is clicked', () => {
-      // TODO: Update selector following CSS modules refactor
       const node = component.find('[data-test-id="query-history-button-fav"]');
       node.simulate('click');
 
-      actions.saveRecent.should.have.been.calledOnce;
+      actions.saveRecent.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
 
     it('should call the copyQuery action when the copy query button is clicked', () => {
-      // TODO: Update selector following CSS modules refactor
       const node = component.find('[data-test-id="query-history-button-copy-query"]');
       node.simulate('click');
 
-      actions.copyQuery.should.have.been.calledOnce;
+      actions.copyQuery.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
 
     it('should call the deleteRecent action when the copy query button is clicked', () => {
-      // TODO: Update selector following CSS modules refactor
       const node = component.find('[data-test-id="query-history-button-delete-recent"]');
       node.simulate('click');
 
-      actions.deleteRecent.should.have.been.calledOnce;
+      actions.deleteRecent.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
   });
 });

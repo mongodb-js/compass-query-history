@@ -57,5 +57,4 @@ const Query = Model.extend({
 export default Query;
 export {
   Query
-}
-
+};

@@ -1,6 +1,5 @@
 import bson from 'bson';
 import { Query } from 'models';
-import { formatQuery } from 'utils';
 
 describe('Query [Model]', () => {
   context('#serialize', () => {

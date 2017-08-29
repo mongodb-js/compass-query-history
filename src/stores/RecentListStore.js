@@ -53,11 +53,9 @@ const RecentListStore = Reflux.createStore({
   addRecent(recent) {
     /* Ignore queries that don't have a namespace. */
     if (!('ns' in recent)) {
-      if (process.env.NODE_ENV !== 'test') {
-        console.warn('Warning: query added without namespace: ' + JSON.stringify(recent, null, ' '));
-      }
       return;
     }
+
     const ns = recent.ns;
 
     /* Ignore empty or default queries */

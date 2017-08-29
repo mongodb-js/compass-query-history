@@ -17,7 +17,7 @@
     "cover": "nyc npm run test",
     "ci": "npm run check && npm test",
     "fmt": "mongodb-js-fmt ./*.js ./test/*.js",
-    "check": "mongodb-js-precommit './src/**/*{.js,.jsx}' './test/**/*.js' index.js",
+    "check": "mongodb-js-precommit './src/**/*{.js,.jsx}' './test/**/*.js'",
     "link-plugin": "./scripts/link.sh",
     "unlink-plugin": "./scripts/unlink.sh",
     "prepublish": "npm run compile",

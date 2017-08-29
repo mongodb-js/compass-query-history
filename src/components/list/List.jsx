@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import mongodbns from 'mongodb-ns';
 
-import { Card, CardHeader, CardBody } from 'components/card';
+import { Card, CardBody } from 'components/card';
 import styles from './List.less';
 
 const factory = (ListItem, Saving) => {
@@ -13,8 +13,9 @@ const factory = (ListItem, Saving) => {
     static propTypes = {
       items: PropTypes.oneOfType([
         PropTypes.array,
-        PropTypes.object,
+        PropTypes.object
       ]).isRequired,
+      actions: PropTypes.string.isRequired,
       zeroStateTitle: PropTypes.string.isRequired,
       current: PropTypes.object,
       ns: PropTypes.object
@@ -29,8 +30,8 @@ const factory = (ListItem, Saving) => {
 
     renderSaving = () => {
       const { current, actions } = this.props;
-      
-      if(typeof Saving !== 'function' || current === null) {
+
+      if (typeof Saving !== 'function' || current === null) {
         return null;
       }
 
@@ -39,7 +40,7 @@ const factory = (ListItem, Saving) => {
 
     renderZeroState = (length) => {
       const { current, zeroStateTitle } = this.props;
-      
+
       if (length === 0 && current === null) {
         return (
           <Card>
@@ -51,30 +52,10 @@ const factory = (ListItem, Saving) => {
       }
 
       return null;
-    }
+    };
 
     render() {
       const { items, ns, actions } = this.props;
-
-      const date = new Date();
-      const recent = {
-        _ns: '',
-        _name: 'Hello World',
-        _lastExecuted: date,
-        getAttributes: () => {
-          return {
-            filter: { _id: 234, name: { $contains: ['foo'] } },
-            skip: { _id: 1 },
-            limit: 10
-          };
-        }
-      };
-
-      const tempItems = [
-        recent,
-        recent,
-        recent
-      ];
 
       const renderItems = items
         .filter( item => item._ns === ns.ns)
@@ -89,11 +70,11 @@ const factory = (ListItem, Saving) => {
           </ul>
         </div>
       );
-    };
+    }
   }
 
   return List;
-}
+};
 
 export default factory;
 export { factory as listFactory };

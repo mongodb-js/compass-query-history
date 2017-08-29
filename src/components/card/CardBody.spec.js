@@ -11,7 +11,7 @@ describe('CardBody [Component]', () => {
     beforeEach((done) => {
       component = shallow(<CardBody className="foo"><span>Test</span></CardBody>);
       done();
-    })
+    });
 
     afterEach((done) => {
       component = null;
@@ -20,7 +20,7 @@ describe('CardBody [Component]', () => {
 
     it('should be a stateless function', () => {
       expect(CardBody).to.be.a('function');
-    })
+    });
 
     it('renders the correct className on the root node', () => {
       const node = component.find(`.${styles['component-body']}`);
@@ -28,12 +28,12 @@ describe('CardBody [Component]', () => {
     });
 
     it('renders the className passed to it', () => {
-      const node = component.find(`.foo`);
+      const node = component.find('.foo');
       expect(node).to.have.length(1);
     });
 
     it('renders children passed to it', () => {
-      const node = component.find(`span`);
+      const node = component.find('span');
       expect(node).to.have.length(1);
       expect(node).to.have.text('Test');
     });

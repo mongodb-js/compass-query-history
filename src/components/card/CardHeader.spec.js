@@ -16,7 +16,7 @@ describe('CardHeader [Component]', () => {
           <span>Child 3</span>
         </CardHeader>
       );
-      
+
       done();
     });
 
@@ -27,7 +27,7 @@ describe('CardHeader [Component]', () => {
 
     it('should be a stateless function', () => {
       expect(CardHeader).to.be.a('function');
-    })
+    });
 
     it('renders the correct className on the root node', () => {
       const node = component.find(`.${styles['component-header']}`);
@@ -35,7 +35,7 @@ describe('CardHeader [Component]', () => {
     });
 
     it('renders the className passed to it', () => {
-      const node = component.find(`.foo`);
+      const node = component.find('.foo');
       expect(node).to.have.length(1);
     });
 

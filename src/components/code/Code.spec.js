@@ -11,12 +11,12 @@ describe('Code [Component]', () => {
     beforeEach((done) => {
       component = shallow(<Code language="js" code={code} />);
       done();
-    })
+    });
 
     afterEach((done) => {
       component = null;
       done();
-    })
+    });
 
     it('renders the root node as a <pre /> tag so that it is not parsed by the browser', () => {
       const node = component.find('pre');

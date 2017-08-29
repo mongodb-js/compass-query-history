@@ -1,10 +1,9 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 
-import { Card, CardHeader, CardBody } from 'components/card';
+import { Card, CardHeader } from 'components/card';
 import Saving from 'components/saving';
 import Query from 'components/query';
-import styles from './Saving.less';
 
 describe('Saving [Component]', () => {
   const date = new Date();
@@ -32,14 +31,14 @@ describe('Saving [Component]', () => {
     actions = null;
     done();
   });
-  
+
   describe('#rendering', () => {
     let component;
 
     afterEach((done) => {
       component = null;
       done();
-    })
+    });
 
     it('does not render the saving component when the model is null', () => {
       component = shallow(<Saving model={null} actions={actions} />);
@@ -59,7 +58,7 @@ describe('Saving [Component]', () => {
 
     it('renders the header', () => {
       component = shallow(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find('[data-test-id="query-history-saving-header"]');
 
       expect(node).to.have.length(1);
@@ -68,7 +67,7 @@ describe('Saving [Component]', () => {
 
     it('the header should have two children', () => {
       component = shallow(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find('[data-test-id="query-history-saving-header"]');
 
       expect(node.children()).to.have.length(2);
@@ -76,7 +75,7 @@ describe('Saving [Component]', () => {
 
     it('renders the form', () => {
       component = mount(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find('[data-test-id="query-history-saving-form"]');
 
       expect(node).to.have.length(1);
@@ -85,7 +84,7 @@ describe('Saving [Component]', () => {
 
     it('the form should have an input', () => {
       component = mount(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find('[data-test-id="query-history-saving-form"]');
 
       expect(node.children()).to.have.length(1);
@@ -94,7 +93,7 @@ describe('Saving [Component]', () => {
 
     it('renders the save button', () => {
       component = shallow(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find('[data-test-id="query-history-saving-form-button-save"]');
 
       expect(node).to.have.length(1);
@@ -103,7 +102,7 @@ describe('Saving [Component]', () => {
 
     it('renders the cancel button', () => {
       component = shallow(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find('[data-test-id="query-history-saving-form-button-cancel"]');
 
       expect(node).to.have.length(1);
@@ -112,7 +111,7 @@ describe('Saving [Component]', () => {
 
     it('renders the query component', () => {
       component = shallow(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find(Query);
       expect(node).to.have.length(1);
     });
@@ -123,11 +122,11 @@ describe('Saving [Component]', () => {
 
     it('should save the query as a favorite when the form is submitted', () => {
       component = shallow(<Saving model={model} actions={actions} />);
-      
+
       const node = component.find('[data-test-id="query-history-saving-form-button-save"]');
 
       node.simulate('click');
-      actions.saveFavorite.should.have.been.calledOnce;
+      actions.saveFavorite.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
 
     it('should cancel the saving of the query as a favorite when the cancel button is clicked', () => {
@@ -135,7 +134,7 @@ describe('Saving [Component]', () => {
       const node = component.find('[data-test-id="query-history-saving-form-button-cancel"]');
 
       node.simulate('click');
-      actions.cancelSave.should.have.been.calledOnce;
+      actions.cancelSave.should.have.been.calledOnce; // eslint-disable-line no-unused-expressions
     });
   });
 });

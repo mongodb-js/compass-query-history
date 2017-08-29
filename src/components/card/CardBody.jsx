@@ -19,7 +19,7 @@ CardBody.propTypes = {
 
 CardBody.defaultProps = {
   className: ''
-}
+};
 
 export default CardBody;
 export { CardBody };

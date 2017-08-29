@@ -9,15 +9,16 @@ import QueryHistoryPluginInjector from 'inject-loader!./Plugin';
 // which make a reference to electron.remote.app which is undefined if run outside the context
 // of the electron renderer - which would result in an error being thrown in these component
 // unit tests.
+
+// eslint-disable-next-line new-cap
 const QueryHistoryPlugin = QueryHistoryPluginInjector({
   'components/sideBar': () => (<div data-test-id="mock-sidebar" />),
   'stores': {
-    SideBarStore: {},
+    SideBarStore: {}
   }
 }).default;
 
 describe('SideBar [Component]', () => {
-  const actions = {};
   let component;
 
   beforeEach((done) => {
@@ -29,7 +30,7 @@ describe('SideBar [Component]', () => {
     component = null;
     done();
   });
-  
+
   describe('#rendering', () => {
     it('should contain a <StoreConnector /> with a store prop', function() {
       const node = component.find(StoreConnector).first();

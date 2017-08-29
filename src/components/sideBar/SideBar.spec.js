@@ -8,6 +8,8 @@ import SideBarInjector from 'inject-loader!components/sideBar/SideBar';
 // which make a reference to electron.remote.app which is undefined if run outside the context
 // of the electron renderer - which would result in an error being thrown in these component
 // unit tests.
+
+// eslint-disable-next-line new-cap
 const { SideBar } = SideBarInjector({
   'stores': {
     HeaderStore: {},
@@ -30,10 +32,10 @@ describe('SideBar [Component]', () => {
     component = null;
     done();
   });
-  
+
   describe('#rendering', () => {
     it('should not render the sidebar if it is collapsed', () => {
-      component = shallow(<SideBar actions={actions} collapsed={true} />);
+      component = shallow(<SideBar actions={actions} collapsed />);
 
       const node = component.find('[data-test-id="query-history-sidebar"]');
       expect(node).to.have.length(0);

@@ -7,29 +7,29 @@ const CardHeader = ({children, title, className, actionsVisible, ...other}) => {
     styles['component-header'],
     className
   );
-  
+
   const _headerInnerClassName = classnames(
     styles['component-header-inner']
   );
-  
+
   const _titleClassName = classnames(
     styles['component-header-title']
   );
-  
+
   const _actionsClassName = classnames(
     styles['component-header-actions'],
     { [ styles['is-visible'] ]: actionsVisible }
   );
 
-  const renderTitle = (title) => {
-    return React.Children.map(title, (child) => {
+  const renderTitle = (titleChild) => {
+    return React.Children.map(titleChild, (child) => {
       // If the title is a text node, wrap it in the title element
       // else return the node as is
       return (child.type === undefined)
         ? <div className={_titleClassName}>{child}</div>
-        : <div className={_headerInnerClassName}>{child}</div>
-    })
-  }
+        : <div className={_headerInnerClassName}>{child}</div>;
+    });
+  };
 
   return (
     <div className={_className} {...other}>
@@ -50,7 +50,7 @@ CardHeader.defaultProps = {
   className: '',
   title: null,
   actionsVisible: false
-}
+};
 
 export default CardHeader;
 export { CardHeader };

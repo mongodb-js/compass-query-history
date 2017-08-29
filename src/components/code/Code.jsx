@@ -18,11 +18,11 @@ class Code extends PureComponent {
 
   componentDidMount() {
     this.highlightCode();
-  };
+  }
 
   componentDidUpdate() {
     this.highlightCode();
-  };
+  }
 
   highlightCode = () => {
     const node = ReactDOM.findDOMNode(this.refs.code);
@@ -31,7 +31,7 @@ class Code extends PureComponent {
 
   render() {
     const { language, code } = this.props;
-    
+
     return (
       <pre className={classnames(styles.component)}>
         <code className={classnames(styles.code, language)} ref="code">
