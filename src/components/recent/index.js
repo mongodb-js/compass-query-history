@@ -1,5 +1,5 @@
 import { listFactory } from 'components/list';
-import RecentListItem from './RecentListItem';
+import RecentListItem from './recent-list-item';
 
 const RecentList = listFactory(RecentListItem, null);
 

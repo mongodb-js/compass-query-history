@@ -1,4 +1,4 @@
-import { listFactory } from './List';
+import { listFactory } from './list';
 
 export default listFactory;
 export { listFactory };

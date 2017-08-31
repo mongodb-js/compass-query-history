@@ -1,3 +1,3 @@
-import formatQuery from './formatQuery';
+import formatQuery from './format-query';
 
 export { formatQuery };
