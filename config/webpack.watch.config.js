@@ -1,13 +1,14 @@
 const webpack = require('webpack');
+const PeerDepsExternalsPlugin = require('peer-deps-externals-webpack-plugin');
 const path = require('path');
 
 const project = require('./project');
 
 const GLOBALS = {
-    'process.env': {
-        'NODE_ENV': JSON.stringify('development')
-    },
-    __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true'))
+  'process.env': {
+    'NODE_ENV': JSON.stringify('development')
+  },
+  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || 'true'))
 };
 
 module.exports = {
@@ -67,7 +68,7 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              plugins: function () {
+              plugins: function() {
                 return [
                   project.plugin.autoprefixer
                 ];
@@ -109,11 +110,15 @@ module.exports = {
             limit: 8192,
             name: 'assets/fonts/[name]__[hash:base64:5].[ext]'
           }
-        }],
+        }]
       }
     ]
   },
   plugins: [
+    // Auto-create webpack externals for any dependency listed as a peerDependency in package.json
+    // so that the external vendor JavaScript is not part of our compiled bundle
+    new PeerDepsExternalsPlugin(),
+
     // Prints more readable module names in the browser console on HMR updates
     new webpack.NamedModulesPlugin(),
 
