@@ -8,14 +8,12 @@ describe('Code [Component]', () => {
   describe('#rendering', () => {
     let component;
 
-    beforeEach((done) => {
+    beforeEach(() => {
       component = shallow(<Code language="js" code={code} />);
-      done();
     });
 
-    afterEach((done) => {
+    afterEach(() => {
       component = null;
-      done();
     });
 
     it('renders the root node as a <pre /> tag so that it is not parsed by the browser', () => {

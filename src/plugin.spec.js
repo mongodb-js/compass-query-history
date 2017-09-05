@@ -21,14 +21,12 @@ const QueryHistoryPlugin = QueryHistoryPluginInjector({
 describe('SideBar [Component]', () => {
   let component;
 
-  beforeEach((done) => {
+  beforeEach(() => {
     component = shallow(<QueryHistoryPlugin actions={{}} />);
-    done();
   });
 
-  afterEach((done) => {
+  afterEach(() => {
     component = null;
-    done();
   });
 
   describe('#rendering', () => {

@@ -9,14 +9,12 @@ describe('Query [Component]', () => {
   const attributes = { filter: { name: 'test' }};
   let component;
 
-  beforeEach((done) => {
+  beforeEach(() => {
     component = shallow(<Query title={title} attributes={attributes} />);
-    done();
   });
 
-  afterEach((done) => {
+  afterEach(() => {
     component = null;
-    done();
   });
 
   describe('#rendering', () => {

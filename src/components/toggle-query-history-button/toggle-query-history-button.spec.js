@@ -9,14 +9,12 @@ describe('ToggleQueryHistoryButton [Component]', () => {
   describe('#rendering', () => {
     let component;
 
-    beforeEach((done) => {
+    beforeEach(() => {
       component = shallow(<ToggleQueryHistoryButton />);
-      done();
     });
 
-    afterEach((done) => {
+    afterEach(() => {
       component = null;
-      done();
     });
 
     it('renders a button', () => {

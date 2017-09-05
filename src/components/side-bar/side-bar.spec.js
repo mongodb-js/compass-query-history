@@ -28,9 +28,8 @@ describe('SideBar [Component]', () => {
   const actions = {};
   let component;
 
-  afterEach((done) => {
+  afterEach(() => {
     component = null;
-    done();
   });
 
   describe('#rendering', () => {

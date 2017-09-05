@@ -19,21 +19,18 @@ describe('FavoriteListItem [Component]', () => {
   let actions;
   let component;
 
-  beforeEach((done) => {
+  beforeEach(() => {
     actions = {
       copyQuery: sinon.stub(),
       deleteFavorite: sinon.stub()
     };
 
     component = shallow(<FavoriteListItem model={favorite} actions={actions} />);
-    done();
   });
 
-  afterEach((done) => {
+  afterEach(() => {
     actions = null;
     component = null;
-
-    done();
   });
 
   describe('#rendering', () => {

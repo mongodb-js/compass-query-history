@@ -6,6 +6,6 @@ const FavoriteList = listFactory(FavoriteListItem, Saving);
 
 export default FavoriteList;
 export {
-	FavoriteList,
-	FavoriteListItem
+  FavoriteList,
+  FavoriteListItem
 };

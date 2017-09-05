@@ -8,31 +8,27 @@ import styles from './header.less';
 describe('Header [Component]', () => {
   let actions;
 
-  beforeEach((done) => {
+  beforeEach(() => {
     actions = {
       showRecent: sinon.stub(),
       showFavorites: sinon.stub(),
       collapse: sinon.stub()
     };
-    done();
   });
 
-  afterEach((done) => {
+  afterEach(() => {
     actions = null;
-    done();
   });
 
   describe('#rendering', () => {
     let component;
 
-    beforeEach((done) => {
+    beforeEach(() => {
       component = shallow(<Header actions={actions} />);
-      done();
     });
 
-    afterEach((done) => {
+    afterEach(() => {
       component = null;
-      done();
     });
 
     it('renders the correct root className', () => {
@@ -63,14 +59,12 @@ describe('Header [Component]', () => {
     });
 
     describe('when viewing the Recent Queries tab', () => {
-      beforeEach((done) => {
+      beforeEach(() => {
         component = mount(<Header actions={actions} showing="recent" />);
-        done();
       });
 
-      afterEach((done) => {
+      afterEach(() => {
         component = null;
-        done();
       });
 
       it('it should switch to the favorites tab when the Favorites button is clicked', () => {
@@ -89,14 +83,12 @@ describe('Header [Component]', () => {
     });
 
     describe('when viewing the Favorites tab', () => {
-      beforeEach((done) => {
+      beforeEach(() => {
         component = mount(<Header actions={actions} showing="favorites" />);
-        done();
       });
 
-      afterEach((done) => {
+      afterEach(() => {
         component = null;
-        done();
       });
 
       it('it should switch to the recent tab when the Recents button is clicked', () => {

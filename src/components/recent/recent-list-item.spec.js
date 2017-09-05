@@ -19,7 +19,7 @@ describe('RecentListItem [Component]', () => {
   let actions;
   let component;
 
-  beforeEach((done) => {
+  beforeEach(() => {
     actions = {
       saveRecent: sinon.stub(),
       copyQuery: sinon.stub(),
@@ -27,14 +27,11 @@ describe('RecentListItem [Component]', () => {
     };
 
     component = shallow(<RecentListItem model={recent} actions={actions} />);
-    done();
   });
 
-  afterEach((done) => {
+  afterEach(() => {
     actions = null;
     component = null;
-
-    done();
   });
 
   describe('#rendering', () => {

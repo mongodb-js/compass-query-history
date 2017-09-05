@@ -8,7 +8,7 @@ describe('CardHeader [Component]', () => {
   describe('#rendering', () => {
     let component;
 
-    beforeEach((done) => {
+    beforeEach(() => {
       component = shallow(
         <CardHeader title="Test" className="foo">
           <span>Child 1</span>
@@ -16,13 +16,10 @@ describe('CardHeader [Component]', () => {
           <span>Child 3</span>
         </CardHeader>
       );
-
-      done();
     });
 
-    afterEach((done) => {
+    afterEach(() => {
       component = null;
-      done();
     });
 
     it('should be a stateless function', () => {

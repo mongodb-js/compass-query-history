@@ -8,14 +8,12 @@ describe('CardBody [Component]', () => {
   describe('#rendering', () => {
     let component;
 
-    beforeEach((done) => {
+    beforeEach(() => {
       component = shallow(<CardBody className="foo"><span>Test</span></CardBody>);
-      done();
     });
 
-    afterEach((done) => {
+    afterEach(() => {
       component = null;
-      done();
     });
 
     it('should be a stateless function', () => {

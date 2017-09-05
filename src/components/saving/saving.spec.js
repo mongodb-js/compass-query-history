@@ -19,25 +19,22 @@ describe('Saving [Component]', () => {
 
   let actions;
 
-  beforeEach((done) => {
+  beforeEach(() => {
     actions = {
       cancelSave: sinon.stub(),
       saveFavorite: sinon.stub()
     };
-    done();
   });
 
-  afterEach((done) => {
+  afterEach(() => {
     actions = null;
-    done();
   });
 
   describe('#rendering', () => {
     let component;
 
-    afterEach((done) => {
+    afterEach(() => {
       component = null;
-      done();
     });
 
     it('does not render the saving component when the model is null', () => {
