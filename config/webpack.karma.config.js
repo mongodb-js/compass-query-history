@@ -69,7 +69,7 @@ module.exports = {
         ]
       },
       {
-        test: /node_modules\/JSONStream\/index\.js$/,
+        test: /node_modules[\\\/]JSONStream[\\\/]index\.js/,
         use: [{ loader: 'shebang-loader' }]
       },
       {
