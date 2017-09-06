@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StoreConnector } from 'hadron-react-components';
 import SideBar from 'components/side-bar';
-import { SideBarStore } from 'stores';
+import { QueryHistoryStore } from 'stores';
 import Actions from 'actions';
 
 class Plugin extends Component {
@@ -14,7 +14,7 @@ class Plugin extends Component {
    */
   render() {
     return (
-      <StoreConnector store={SideBarStore}>
+      <StoreConnector store={QueryHistoryStore}>
         <SideBar actions={Actions} {...this.props} />
       </StoreConnector>
     );

@@ -14,7 +14,7 @@ import QueryHistoryPluginInjector from 'inject-loader!./plugin';
 const QueryHistoryPlugin = QueryHistoryPluginInjector({
   'components/side-bar': () => (<div data-test-id="mock-sidebar" />),
   'stores': {
-    SideBarStore: {}
+    QueryHistoryStore: {}
   }
 }).default;
 

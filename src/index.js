@@ -1,7 +1,7 @@
 import QueryHistoryPlugin from './plugin';
 import ToggleQueryHistoryButton from 'components/toggle-query-history-button';
 
-import { SideBarStore, RecentListStore, FavoriteListStore } from 'stores';
+import { QueryHistoryStore, RecentListStore, FavoriteListStore } from 'stores';
 import { RecentQuery, FavoriteQuery, RecentQueryCollection, FavoriteQueryCollection } from 'models';
 
 import QueryHistoryActions from 'actions';
@@ -12,7 +12,7 @@ import QueryHistoryActions from 'actions';
  **/
 function activate(appRegistry) {
   // Register Stores
-  appRegistry.registerStore('QueryHistory.Store', SideBarStore);
+  appRegistry.registerStore('QueryHistory.Store', QueryHistoryStore);
   appRegistry.registerStore('QueryHistory.RecentListStore', RecentListStore);
   appRegistry.registerStore('QueryHistory.FavoriteListStore', FavoriteListStore);
 

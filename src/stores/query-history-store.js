@@ -4,9 +4,9 @@ import StateMixin from 'reflux-state-mixin';
 import mongodbns from 'mongodb-ns';
 
 /**
- * SideBarStore store.
+ * QueryHistoryStore store.
  */
-const SideBarStore = Reflux.createStore({
+const QueryHistoryStore = Reflux.createStore({
   /**
    * adds a state to the store, similar to React.Component's state
    * @see https://github.com/yonatanmn/Super-Simple-Flux#reflux-state-mixin
@@ -103,11 +103,11 @@ const SideBarStore = Reflux.createStore({
   getInitialState() {
     return {
       showing: 'recent',
-      collapsed: true,
+      collapsed: false,
       ns: mongodbns('')
     };
   }
 });
 
-export default SideBarStore;
-export { SideBarStore };
+export default QueryHistoryStore;
+export { QueryHistoryStore };
