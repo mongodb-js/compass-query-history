@@ -12,13 +12,13 @@ import QueryHistoryPluginInjector from 'inject-loader!./plugin';
 
 // eslint-disable-next-line new-cap
 const QueryHistoryPlugin = QueryHistoryPluginInjector({
-  'components/side-bar': () => (<div data-test-id="mock-sidebar" />),
+  'components/query-history': () => (<div data-test-id="mock-sidebar" />),
   'stores': {
     QueryHistoryStore: {}
   }
 }).default;
 
-describe('SideBar [Component]', () => {
+describe('QueryHistory [Plugin]', () => {
   let component;
 
   beforeEach(() => {

@@ -11,10 +11,10 @@ import { FavoriteList } from 'components/favorite';
 
 // Stores
 import { HeaderStore, RecentListStore, FavoriteListStore } from 'stores';
-import styles from './side-bar.less';
+import styles from './query-history.less';
 
-class SideBar extends PureComponent {
-  static displayName = 'QueryHistorySideBar';
+class QueryHistory extends PureComponent {
+  static displayName = 'QueryHistory';
 
   static propTypes = {
     actions: PropTypes.object.isRequired,
@@ -32,7 +32,7 @@ class SideBar extends PureComponent {
   renderFavorites = () => (
     <StoreConnector store={FavoriteListStore}>
       <FavoriteList
-        data-test-id="query-history-sidebar-list-favorites"
+        data-test-id="query-history-list-favorites"
         ns={this.props.ns}
         actions={this.props.actions}
         zeroStateTitle="Favorite a query to see it saved here!" />
@@ -42,7 +42,7 @@ class SideBar extends PureComponent {
   renderRecents = () => (
     <StoreConnector store={RecentListStore}>
       <RecentList
-        data-test-id="query-history-sidebar-list-recent"
+        data-test-id="query-history-list-recent"
         ns={this.props.ns}
         actions={this.props.actions}
         zeroStateTitle="Run a query to see it saved here!" />
@@ -58,12 +58,12 @@ class SideBar extends PureComponent {
 
     return (
       <div
-        data-test-id="query-history-sidebar"
+        data-test-id="query-history"
         className={classnames(styles.component)}>
-        <div className={classnames(styles.sidebar)}>
+        <div className={classnames(styles.inner)}>
           <StoreConnector store={HeaderStore}>
             <Header
-              data-test-id="query-history-sidebar-header"
+              data-test-id="query-history-header"
               actions={actions}
               showing={showing}/>
           </StoreConnector>
@@ -76,5 +76,5 @@ class SideBar extends PureComponent {
   }
 }
 
-export default SideBar;
-export { SideBar };
+export default QueryHistory;
+export { QueryHistory };
