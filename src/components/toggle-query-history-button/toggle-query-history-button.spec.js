@@ -31,7 +31,7 @@ describe('ToggleQueryHistoryButton [Component]', () => {
       const node = component.find('[data-test-id="query-history-button-icon"]');
 
       expect(node).to.have.type(FontAwesome);
-      expect(node.prop('name')).to.equal('history');
+      expect(node.prop('name')).to.equal('clock-o');
     });
   });
 });

@@ -32,7 +32,7 @@ class ToggleQueryHistoryButton extends PureComponent {
           data-tip="Past and Favorite Queries">
           <FontAwesome
             data-test-id="query-history-button-icon"
-            name="history"
+            name="clock-o"
             className="query-history-button-icon"
           />
           <ReactTooltip
