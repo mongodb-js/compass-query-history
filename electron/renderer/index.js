@@ -19,6 +19,7 @@ global.hadronApp.appRegistry = appRegistry;
 
 // Activate our plugin with the Hadron App Registry
 activate(appRegistry);
+appRegistry.onActivated();
 
 // Since we are using HtmlWebpackPlugin WITHOUT a template,
 // we should create our own root node in the body element before rendering into it.
@@ -27,8 +28,10 @@ root.id = 'root';
 document.body.appendChild( root );
 
 const actions = configureActions();
+const localAppRegistry = new AppRegistry();
+
 const store = configureStore({
-  localAppRegistry: new AppRegistry(),
+  localAppRegistry: localAppRegistry,
   namespace: 'echo.artists',
   actions: actions
 });
@@ -44,6 +47,20 @@ const render = Component => {
 };
 
 // Render our plugin
+localAppRegistry.emit('toggle-query-history');
+// set up a recent query and a favourite query for debugging
+const query = {
+  filter: { name: 'Chashu' },
+  project: {},
+  sort: {},
+  collation: {},
+  skip: {},
+  limit: {},
+  maxTimeMS: 1000,
+  ns: 'echo.artists'
+};
+
+localAppRegistry.emit('query-applied', query);
 render( QueryHistoryPlugin );
 
 if (module.hot) {

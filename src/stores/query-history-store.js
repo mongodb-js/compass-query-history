@@ -46,6 +46,10 @@ const configureStore = (options = {}) => {
       });
     },
 
+    runQuery(attrs) {
+      this.localAppRegistry('auto-populate-query', attrs);
+    },
+
     toggleCollapse() {
       this.setState({
         collapsed: !this.state.collapsed
