@@ -31,15 +31,11 @@
     "test:karma": "cross-env NODE_ENV=test karma start",
     "cover": "nyc npm run test",
     "ci": "npm run cover && npm run compile && npm run check",
-    "fmt": "mongodb-js-fmt ./*.js ./test/*.js",
     "check": "mongodb-js-precommit './src/**/*{.js,.jsx}' './test/**/*.js' './electron/**/*.js' './config/**/*{.js,.jsx}'",
     "link-plugin": "./scripts/link.sh",
     "unlink-plugin": "./scripts/unlink.sh",
-    "prepublish": "npm run compile",
+    "prepublishOnly": "npm run compile"
   },
-  "precommit": [
-    "check"
-  ],
   "dependency-check": {
     "ignore": [
       "react-dom"
