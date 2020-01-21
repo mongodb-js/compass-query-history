@@ -63,7 +63,7 @@
     "reflux-state-mixin": "^0.7.0"
   },
   "devDependencies": {
-    "@storybook/react": "^3.2.0",
+    "@storybook/react": "^5.3.8",
     "autoprefixer": "^9.4.6",
     "babel-cli": "^6.10.1",
     "babel-core": "^6.24.1",
